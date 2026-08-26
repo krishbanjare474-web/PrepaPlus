@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CG Environment - PrepaPlus</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f8f5;
+        }
+
+        .cg-env-header {
+            background: linear-gradient(135deg, #198754, #20c997);
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        .cg-env-header h1 {
+            margin: 0 0 8px;
+            font-size: 28px;
+        }
+
+        .cg-env-header p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .env-container {
+            max-width: 850px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        .env-title {
+            background: white;
+            padding: 18px;
+            border-radius: 14px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .env-title h2 {
+            margin: 0 0 8px;
+            color: #198754;
+        }
+
+        .env-title p {
+            margin: 0;
+            color: #666;
+        }
+
+        #question-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .question-card {
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .question-card h3 {
+            margin-top: 0;
+            color: #222;
+            font-size: 18px;
+        }
+
+        .option {
+            display: block;
+            background: #f5f7f8;
+            border: 2px solid #e1e5e8;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .option:hover {
+            border-color: #20c997;
+            background: #effff8;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .correct {
+            background: #d1e7dd !important;
+            border-color: #198754 !important;
+            color: #146c43;
+        }
+
+        .wrong {
+            background: #f8d7da !important;
+            border-color: #dc3545 !important;
+            color: #b02a37;
+        }
+
+        #submit-btn {
+            display: block;
+            width: 100%;
+            margin: 25px 0;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: #198754;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #submit-btn:hover {
+            background: #157347;
+        }
+
+        #result {
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .cg-env-header h1 {
+                font-size: 23px;
+            }
+
+            .question-card h3 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="cg-env-header">
+        <h1>🌿 CG Environment</h1>
+        <p>छत्तीसगढ़ पर्यावरण एवं पारिस्थितिकी</p>
+    </header>
+
+    <main class="env-container">
+
+        <div class="env-title">
+            <h2>🌱 CG Environment Practice Test</h2>
+            <p>छत्तीसगढ़ पर्यावरण के महत्वपूर्ण MCQ प्रश्न</p>
+        </div>
+
+        <div id="question-container"></div>
+
+        <button id="submit-btn" onclick="checkResult()">
+            ✅ Submit & Check
+        </button>
+
+        <div id="result"></div>
+
+    </main>
+
+    <script src="cg-environment.js"></script>
+
+</body>
+</html>

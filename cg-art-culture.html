@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CG Art & Culture Practice - PrepaPlus</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: #f4f8fc;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .practice-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        .practice-title {
+            text-align: center;
+            background: #8e44ad;
+            color: white;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .practice-title h1 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        .practice-title p {
+            margin: 8px 0 0;
+            font-size: 15px;
+        }
+
+        .question-card {
+            background: white;
+            padding: 18px;
+            margin-bottom: 18px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .option {
+            display: block;
+            padding: 12px;
+            margin: 9px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #fafafa;
+            transition: 0.2s;
+        }
+
+        .option:hover {
+            background: #f4eafa;
+        }
+
+        .option input {
+            margin-right: 10px;
+        }
+
+        .correct {
+            background: #c8f7d0 !important;
+            border-color: #28a745 !important;
+            color: #146c2e;
+        }
+
+        .wrong {
+            background: #ffd0d0 !important;
+            border-color: #dc3545 !important;
+            color: #9b1c1c;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #0d6efd;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+
+        .submit-btn:hover {
+            background: #0b5ed7;
+        }
+
+        #result {
+            text-align: center;
+            background: white;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="practice-container">
+
+        <div class="practice-title">
+            <h1>🎭 CG Art & Culture Practice</h1>
+            <p>छत्तीसगढ़ कला एवं संस्कृति — 200 महत्वपूर्ण MCQ</p>
+        </div>
+
+        <div id="quiz"></div>
+
+        <button class="submit-btn" onclick="checkResult()">
+            ✅ Submit & Check Result
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script src="cg-art-culture.js"></script>
+
+</body>
+
+</html>

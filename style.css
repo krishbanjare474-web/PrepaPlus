@@ -1,0 +1,475 @@
+/* =========================
+   PREPAPLUS - STYLE.CSS
+   PART 1
+========================= */
+
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f7fc;
+    color:#222;
+    line-height:1.6;
+}
+
+/* Header */
+header{
+    background:linear-gradient(135deg,#0d6efd,#6610f2);
+    color:#fff;
+    text-align:center;
+    padding:25px 15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+header h1{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+header p{
+    font-size:16px;
+    opacity:.9;
+}
+
+/* Navbar */
+.navbar{
+    background:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#0d6efd;
+}
+
+.nav-links{
+    display:flex;
+    gap:18px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#333;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#0d6efd;
+}
+
+/* Hero */
+.hero{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:#fff;
+    text-align:center;
+    padding:70px 20px;
+}
+
+.hero h2{
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    max-width:700px;
+    margin:auto;
+}
+
+.start-btn{
+    display:inline-block;
+    margin-top:25px;
+    background:#fff;
+    color:#2563eb;
+    padding:14px 30px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.start-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+/* =========================
+   PREPAPLUS - STYLE.CSS
+   PART 2
+========================= */
+
+/* Search Box */
+.search-box{
+    max-width:700px;
+    margin:30px auto;
+    display:flex;
+    gap:10px;
+    padding:0 15px;
+}
+
+.search-box input{
+    flex:1;
+    padding:14px;
+    border:2px solid #dbe4ff;
+    border-radius:12px;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+.search-box input:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 10px rgba(37,99,235,.2);
+}
+
+.search-box button{
+    padding:14px 22px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:#fff;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.search-box button:hover{
+    background:#1d4ed8;
+}
+
+/* Cards */
+.cards{
+    max-width:1200px;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+    padding:0 15px;
+}
+
+.card{
+    display:block;
+    text-decoration:none;
+    background:#fff;
+    color:#222;
+    border-radius:16px;
+    padding:22px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+    border-top:5px solid #2563eb;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+
+.card h3{
+    color:#2563eb;
+    margin-bottom:12px;
+    font-size:22px;
+}
+
+.card p{
+    color:#555;
+    line-height:1.6;
+}
+
+/* About */
+.about{
+    max-width:900px;
+    margin:40px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.about h2{
+    color:#2563eb;
+    margin-bottom:15px;
+}
+
+.about p{
+    color:#555;
+    line-height:1.8;
+}
+
+/* Footer */
+footer{
+    margin-top:50px;
+    background:#0d6efd;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    font-size:15px;
+}
+/* =========================
+   PREPAPLUS - STYLE.CSS
+   PART 3
+========================= */
+
+/* Quiz Container */
+#quiz{
+    max-width:900px;
+    margin:30px auto;
+    padding:0 15px;
+}
+
+/* Question Card */
+.question,
+.question-card{
+    background:#fff;
+    margin-bottom:20px;
+    padding:20px;
+    border-radius:16px;
+    border-left:5px solid #2563eb;
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+.question h3,
+.question-card h3{
+    font-size:18px;
+    color:#222;
+    margin-bottom:15px;
+    line-height:1.6;
+}
+
+/* Options */
+.question label,
+.question-card label{
+    display:block;
+    background:#f8faff;
+    border:1px solid #dbe4ff;
+    border-radius:10px;
+    padding:12px 15px;
+    margin:10px 0;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.question label:hover,
+.question-card label:hover{
+    background:#e8f0ff;
+    border-color:#2563eb;
+}
+
+.question input[type="radio"],
+.question-card input[type="radio"]{
+    margin-right:10px;
+}
+
+/* Submit Button */
+button{
+    display:block;
+    margin:30px auto;
+    padding:14px 35px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(135deg,#0d6efd,#6610f2);
+    color:#fff;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+}
+
+/* Result Box */
+#result{
+    max-width:900px;
+    margin:25px auto;
+    background:#fff;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* Answer Colors */
+.correct{
+    background:#d4edda !important;
+    border-color:#198754 !important;
+    color:#198754;
+}
+
+.wrong{
+    background:#f8d7da !important;
+    border-color:#dc3545 !important;
+    color:#dc3545;
+}
+/* =========================
+   PREPAPLUS - STYLE.CSS
+   PART 4
+========================= */
+
+/* Smooth Animation */
+.card,
+.question,
+.question-card,
+button{
+    transition:all .3s ease;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#2563eb;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-track{
+    background:#e9eefc;
+}
+
+/* Selection */
+::selection{
+    background:#2563eb;
+    color:#fff;
+}
+
+/* Mobile Responsive */
+@media (max-width:768px){
+
+    header h1{
+        font-size:24px;
+    }
+
+    header p{
+        font-size:14px;
+    }
+
+    .navbar{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero{
+        padding:50px 15px;
+    }
+
+    .hero h2{
+        font-size:28px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .search-box{
+        flex-direction:column;
+    }
+
+    .search-box button{
+        width:100%;
+    }
+
+    .question,
+    .question-card{
+        padding:15px;
+    }
+
+    button{
+        width:100%;
+    }
+}
+/* General Science - Unique Submit Button */
+.science-submit{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+
+    width:90%;
+    max-width:500px;
+    margin:30px auto;
+
+    padding:16px 24px;
+
+    border:none;
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+
+    font-size:20px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 20px rgba(37,99,235,.35);
+
+    transition:.3s ease;
+}
+
+.science-submit span{
+    display:inline-flex;
+    width:32px;
+    height:32px;
+
+    align-items:center;
+    justify-content:center;
+
+    background:white;
+    color:#4f46e5;
+
+    border-radius:50%;
+
+    transition:.3s ease;
+}
+
+.science-submit:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 25px rgba(79,70,229,.45);
+}
+
+.science-submit:hover span{
+    transform:translateX(5px);
+}
+
+.science-submit:active{
+    transform:scale(.96);
+}
+
+.correct {
+    background: #d4edda !important;
+    color: #155724 !important;
+    border: 2px solid #28a745 !important;
+}
+
+.wrong {
+    background: #f8d7da !important;
+    color: #721c24 !important;
+    border: 2px solid #dc3545 !important;
+}

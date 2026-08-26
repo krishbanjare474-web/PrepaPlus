@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CG Districts Practice - PrepaPlus</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f7ff;
+        }
+
+        .quiz-header {
+            background: linear-gradient(135deg, #0d6efd, #00a8ff);
+            color: white;
+            padding: 22px 15px;
+            text-align: center;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        }
+
+        .quiz-header h1 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        .quiz-header p {
+            margin: 8px 0 0;
+            font-size: 14px;
+            opacity: 0.95;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 12px 40px;
+        }
+
+        .question-box {
+            background: white;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #0d6efd;
+        }
+
+        .question-box h3 {
+            margin: 0 0 15px;
+            font-size: 17px;
+            line-height: 1.5;
+            color: #222;
+        }
+
+        .option {
+            display: block;
+            padding: 12px 14px;
+            margin: 9px 0;
+            background: #f5f8fc;
+            border: 1px solid #dce5f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .option:hover {
+            background: #e8f2ff;
+            border-color: #0d6efd;
+        }
+
+        .option input {
+            margin-right: 9px;
+            accent-color: #0d6efd;
+        }
+
+        #submitBtn {
+            display: block;
+            width: 100%;
+            max-width: 800px;
+            margin: 25px auto;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: #0d6efd;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(13,110,253,0.3);
+        }
+
+        #submitBtn:hover {
+            background: #0958c7;
+        }
+
+        #result {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .result-box {
+            background: white;
+            padding: 22px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .result-box h2 {
+            color: #0d6efd;
+        }
+
+        @media (max-width: 600px) {
+
+            .quiz-header h1 {
+                font-size: 21px;
+            }
+
+            .question-box {
+                padding: 15px;
+            }
+
+            .question-box h3 {
+                font-size: 16px;
+            }
+
+            .option {
+                font-size: 14px;
+                padding: 11px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="quiz-header">
+        <h1>🏛️ CG Districts Practice</h1>
+        <p>छत्तीसगढ़ के जिलों पर आधारित MCQ अभ्यास</p>
+    </header>
+
+    <main class="quiz-container">
+
+        <div id="quiz"></div>
+
+        <button id="submitBtn" onclick="checkResult()">
+            ✅ Submit & Check Result
+        </button>
+
+        <div id="result"></div>
+
+    </main>
+
+    <script src="cg-districts.js"></script>
+
+</body>
+
+</html>

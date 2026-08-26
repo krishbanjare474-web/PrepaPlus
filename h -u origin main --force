@@ -1,0 +1,47 @@
+ .../tsc_typescript-native     |   1 -
+ .bash_history                 |   1 -
+ .bashrc                       |   0
+ .cache/axs/.axs_update_cache  |   1 -
+ .../.package-lock.json        |  13 --
+ .../types-registry/README.md  |   2 -
+ .../types-registry/index.json |   1 -
+ .../package.json              |  20 --
+ .../7.0/package-lock.json     |  18 --
+ .../7.0/package.json          |   1 -
+ .gitignore                    |   2 +
+ ...e4e5363ddbab3dccf03d0b0759 |   1 -
+ ...b3410448ae2290e403fe393009 |   1 -
+ ...2b585a63d67e7f2200668002ac |   1 -
+ ...943c29e5204aacdb11553fa4f2 |   1 -
+ ...2fe620f7307768702358ff10db |   1 -
+ ...c7bd2153b19d68e962ef2517da |   1 -
+ ...6551394a034dff858dffb2928a |   1 -
+ ...73520d6b535776b27e32a1e351 | Bin 8900516 -
+> 0 bytes
+ ...f4dbd081390ddd86f1cd9cb219 |   1 -
+ ...61872e067d485e0ffc66f132fc |   1 -
+ ...7e61fcdcf038c35cc04cc96f48 |   1 -
+ ...4a9f9e3eac27613a52f9d09d71 | Bin 401390 ->
+ 0 bytes
+ ...4c11a59e0a7252cdd674401f1b |   1 -
+ ...d89a4231f2bccd32f63d72f99a |   1 -
+ ...44e957dfb99e903ae5bc73fbb7 |   1 -
+ ...d5bf9457ee57b4289f55c15932 |   1 -
+ ...d91ba6b52bd68f0ca7858696aa |   1 -
+ ...91ed23cd587723755f34a67e9e | Bin 401112 ->
+ 0 bytes
+ ...8c586a031fcbccc8fb73549346 |   1 -
+ ...5cb5a9774f298eac3743c1c42c |   1 -
+ ...19d16939042596aef2a6d861a7 |   1 -
+ ...cb137854fe2d5d144d2968c309 |   1 -
+ ...111c0d30260b0e07bed3309ecb |   1 -
+ ...2ffb6acd65abf3fc5553c4bb41 |   1 -
+ ...b5258d5c87b9d2df4c05ab5ffe |   1 -
+ ...15cf6e6695c39fbb4960bc9dae |   1 -
+ ...dbdf561ff13168ada05e6c32be |   1 -
+ ...22e468602067c344a52a3b4f19 |   1 -
+ ...43659eb769368aff8534234f55 | Bin 401690 ->
+ 0 bytes
+ ...bf46902a40a3565a2a7a67d57d |   1 -
+ ...afc986b2128d51026c611b9e69 |   1 -
+ ...51ff3a15095fc7a9aebb5402dc |   1 -
