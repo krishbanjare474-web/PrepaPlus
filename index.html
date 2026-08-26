@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0d6efd">
     <title>PrepaPlus</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="app-mode">
   
 
 <div class="logo">
@@ -24,7 +26,7 @@
 <header>
   <div class="search-box">
     <input type="text" placeholder="🔍 Search Exam, GK, Notes...">
-    <button>Search</button>
+    <button onclick="searchSite()">Search</button>
   </div>
 </header>
 
@@ -99,5 +101,41 @@
     </p>
 </section>
 </footer>
+  
+  <script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("PrepaPlus app ready"))
+        .catch(error => console.log("Service Worker error:", error));
+    });
+  }
+  </script>
+  <script>
+function searchSite() {
+    const input = document.querySelector(".search-box input");
+    const query = input.value.trim().toLowerCase();
+
+    if (!query) {
+        alert("Please enter something to search.");
+        return;
+    }
+
+    const pages = {
+        "railway": "railway.html",
+        "railway gk": "railway.html",
+        "gk": "gk.html",
+        "cgpsc": "cgpsc.html",
+        "practice": "practice.html",
+        "mcq": "practice.html"
+    };
+
+    if (pages[query]) {
+        window.location.href = pages[query];
+    } else {
+        alert("No matching page found.");
+    }
+}
+  </script>
 </body> 
 </html>
