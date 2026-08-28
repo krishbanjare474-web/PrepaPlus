@@ -1,0 +1,3253 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice - PrepaPlus</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .practice-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        .practice-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .question-card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .question-card h3 {
+            margin: 0 0 8px;
+        }
+
+        .question-card p {
+            margin: 0 0 12px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .options label {
+            padding: 9px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .options label:hover {
+            background: #f3f6ff;
+        }
+
+        @media (max-width: 600px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <h2>📘 PrepaPlus</h2>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+    </div>
+</nav>
+
+<div class="practice-container">
+
+    <div class="practice-title">
+        <h1>📝 Practice Test</h1>
+        <p>सामान्य ज्ञान | General Knowledge</p>
+    </div>
+
+    <div id="questions"></div>
+
+</div>
+
+<script>
+
+const questions = [
+
+/* =========================
+   INDIAN GK
+========================= */
+
+{
+q:"भारत की राजधानी क्या है?",
+e:"What is the capital of India?",
+o:["मुंबई / Mumbai","नई दिल्ली / New Delhi","कोलकाता / Kolkata","चेन्नई / Chennai"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय पशु कौन सा है?",
+e:"What is the national animal of India?",
+o:["शेर / Lion","बाघ / Tiger","हाथी / Elephant","हिरण / Deer"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय पक्षी कौन सा है?",
+e:"What is the national bird of India?",
+o:["कबूतर / Pigeon","मोर / Peacock","तोता / Parrot","कौआ / Crow"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय फूल कौन सा है?",
+e:"What is the national flower of India?",
+o:["गुलाब / Rose","कमल / Lotus","गेंदा / Marigold","चमेली / Jasmine"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय वृक्ष कौन सा है?",
+e:"What is the national tree of India?",
+o:["नीम / Neem","बरगद / Banyan","पीपल / Peepal","आम / Mango"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय फल कौन सा है?",
+e:"What is the national fruit of India?",
+o:["सेब / Apple","आम / Mango","केला / Banana","संतरा / Orange"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय जलीय जीव कौन सा है?",
+e:"What is the national aquatic animal of India?",
+o:["डॉल्फिन / Dolphin","व्हेल / Whale","मगरमच्छ / Crocodile","कछुआ / Turtle"],
+a:0
+},
+
+{
+q:"भारत का राष्ट्रीय गीत कौन सा है?",
+e:"What is the national song of India?",
+o:["जन गण मन / Jana Gana Mana","वंदे मातरम् / Vande Mataram","सारे जहाँ से अच्छा / Sare Jahan Se Achha","ऐ मेरे वतन के लोगों / Ae Mere Watan Ke Logon"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रगान कौन सा है?",
+e:"What is the national anthem of India?",
+o:["वंदे मातरम् / Vande Mataram","जन गण मन / Jana Gana Mana","सारे जहाँ से अच्छा / Sare Jahan Se Achha","हम होंगे कामयाब / We Shall Overcome"],
+a:1
+},
+
+{
+q:"भारत को स्वतंत्रता कब मिली?",
+e:"When did India get independence?",
+o:["15 अगस्त 1947 / 15 August 1947","26 जनवरी 1950 / 26 January 1950","26 नवंबर 1949 / 26 November 1949","2 अक्टूबर 1947 / 2 October 1947"],
+a:0
+},
+
+{
+q:"भारत का संविधान कब अपनाया गया?",
+e:"When was the Constitution of India adopted?",
+o:["15 अगस्त 1947","26 जनवरी 1950","26 नवंबर 1949","2 अक्टूबर 1950"],
+a:2
+},
+
+{
+q:"भारत गणतंत्र कब बना?",
+e:"When did India become a republic?",
+o:["15 अगस्त 1947","26 जनवरी 1950","26 नवंबर 1949","2 अक्टूबर 1950"],
+a:1
+},
+
+{
+q:"भारत के प्रथम प्रधानमंत्री कौन थे?",
+e:"Who was the first Prime Minister of India?",
+o:["महात्मा गांधी / Mahatma Gandhi","जवाहरलाल नेहरू / Jawaharlal Nehru","सरदार पटेल / Sardar Patel","राजेंद्र प्रसाद / Rajendra Prasad"],
+a:1
+},
+
+{
+q:"भारत के प्रथम राष्ट्रपति कौन थे?",
+e:"Who was the first President of India?",
+o:["डॉ. राजेंद्र प्रसाद / Dr. Rajendra Prasad","जवाहरलाल नेहरू / Jawaharlal Nehru","डॉ. राधाकृष्णन / Dr. Radhakrishnan","सरदार पटेल / Sardar Patel"],
+a:0
+},
+
+{
+q:"भारत का राष्ट्रीय चिन्ह कहाँ से लिया गया है?",
+e:"India's national emblem is taken from?",
+o:["लाल किला / Red Fort","सारनाथ के सिंह स्तंभ / Lion Capital of Sarnath","कुतुब मीनार / Qutub Minar","इंडिया गेट / India Gate"],
+a:1
+},
+
+/* =========================
+   STATES & GEOGRAPHY
+========================= */
+
+{
+q:"क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा राज्य कौन सा है?",
+e:"Which is the largest Indian state by area?",
+o:["महाराष्ट्र / Maharashtra","मध्य प्रदेश / Madhya Pradesh","राजस्थान / Rajasthan","उत्तर प्रदेश / Uttar Pradesh"],
+a:2
+},
+
+{
+q:"क्षेत्रफल की दृष्टि से भारत का सबसे छोटा राज्य कौन सा है?",
+e:"Which is the smallest Indian state by area?",
+o:["गोवा / Goa","सिक्किम / Sikkim","त्रिपुरा / Tripura","मणिपुर / Manipur"],
+a:0
+},
+
+{
+q:"भारत की सबसे लंबी नदी कौन सी है?",
+e:"Which is the longest river in India?",
+o:["यमुना / Yamuna","गंगा / Ganga","नर्मदा / Narmada","गोदावरी / Godavari"],
+a:1
+},
+
+{
+q:"भारत की सबसे ऊँची पर्वत चोटी कौन सी है?",
+e:"Which is the highest mountain peak in India?",
+o:["नंदा देवी / Nanda Devi","कंचनजंगा / Kanchenjunga","अनामुड़ी / Anamudi","धौलागिरी / Dhaulagiri"],
+a:1
+},
+
+{
+q:"भारत का सबसे बड़ा मरुस्थल कौन सा है?",
+e:"Which is the largest desert in India?",
+o:["थार / Thar","सहारा / Sahara","गोबी / Gobi","कालाहारी / Kalahari"],
+a:0
+},
+
+{
+q:"भारत का सबसे बड़ा राज्य जनसंख्या की दृष्टि से कौन सा है?",
+e:"Which is the most populous state of India?",
+o:["बिहार / Bihar","महाराष्ट्र / Maharashtra","उत्तर प्रदेश / Uttar Pradesh","पश्चिम बंगाल / West Bengal"],
+a:2
+},
+
+{
+q:"भारत में सबसे अधिक तटरेखा वाला राज्य कौन सा है?",
+e:"Which Indian state has the longest coastline?",
+o:["गुजरात / Gujarat","महाराष्ट्र / Maharashtra","तमिलनाडु / Tamil Nadu","केरल / Kerala"],
+a:0
+},
+
+{
+q:"गंगा नदी का उद्गम किस ग्लेशियर से होता है?",
+e:"The Ganga originates from which glacier?",
+o:["सियाचिन / Siachen","गंगोत्री / Gangotri","यमुनोत्री / Yamunotri","पिंडारी / Pindari"],
+a:1
+},
+
+{
+q:"यमुना नदी का उद्गम कहाँ से होता है?",
+e:"Where does the Yamuna originate?",
+o:["यमुनोत्री / Yamunotri","गंगोत्री / Gangotri","अमरकंटक / Amarkantak","मानसरोवर / Mansarovar"],
+a:0
+},
+
+{
+q:"नर्मदा नदी का उद्गम कहाँ है?",
+e:"Where does the Narmada originate?",
+o:["अमरकंटक / Amarkantak","नासिक / Nashik","हरिद्वार / Haridwar","पंचमढ़ी / Pachmarhi"],
+a:0
+},
+
+{
+q:"ब्रह्मपुत्र नदी भारत में किस राज्य से प्रवेश करती है?",
+e:"Through which state does the Brahmaputra enter India?",
+o:["असम / Assam","अरुणाचल प्रदेश / Arunachal Pradesh","सिक्किम / Sikkim","पश्चिम बंगाल / West Bengal"],
+a:1
+},
+
+{
+q:"कर्क रेखा भारत के कितने राज्यों से गुजरती है?",
+e:"Through how many Indian states does the Tropic of Cancer pass?",
+o:["6","7","8","9"],
+a:2
+},
+
+{
+q:"भारत में कुल कितने राज्य हैं?",
+e:"How many states are there in India?",
+o:["26","27","28","29"],
+a:2
+},
+
+{
+q:"भारत में कितने केंद्र शासित प्रदेश हैं?",
+e:"How many Union Territories are there in India?",
+o:["6","7","8","9"],
+a:2
+},
+
+{
+q:"अरुणाचल प्रदेश की राजधानी क्या है?",
+e:"What is the capital of Arunachal Pradesh?",
+o:["इटानगर / Itanagar","गंगटोक / Gangtok","दिसपुर / Dispur","कोहिमा / Kohima"],
+a:0
+},
+
+/* =========================
+   HISTORY
+========================= */
+
+{
+q:"भारतीय राष्ट्रीय कांग्रेस की स्थापना कब हुई?",
+e:"When was the Indian National Congress founded?",
+o:["1885","1905","1919","1942"],
+a:0
+},
+
+{
+q:"भारतीय राष्ट्रीय कांग्रेस के प्रथम अध्यक्ष कौन थे?",
+e:"Who was the first President of the Indian National Congress?",
+o:["डब्ल्यू. सी. बनर्जी / W. C. Bonnerjee","दादाभाई नौरोजी / Dadabhai Naoroji","बाल गंगाधर तिलक / Bal Gangadhar Tilak","गोपाल कृष्ण गोखले / Gopal Krishna Gokhale"],
+a:0
+},
+
+{
+q:"प्लासी का युद्ध किस वर्ष हुआ?",
+e:"In which year was the Battle of Plassey fought?",
+o:["1757","1761","1764","1772"],
+a:0
+},
+
+{
+q:"पानीपत की तीसरी लड़ाई किस वर्ष हुई?",
+e:"In which year was the Third Battle of Panipat fought?",
+o:["1757","1761","1764","1770"],
+a:1
+},
+
+{
+q:"मौर्य साम्राज्य के संस्थापक कौन थे?",
+e:"Who founded the Maurya Empire?",
+o:["अशोक / Ashoka","चंद्रगुप्त मौर्य / Chandragupta Maurya","बिंदुसार / Bindusara","हर्ष / Harsha"],
+a:1
+},
+
+{
+q:"सम्राट अशोक की राजधानी क्या थी?",
+e:"What was the capital of Emperor Ashoka?",
+o:["पाटलिपुत्र / Pataliputra","उज्जैन / Ujjain","कन्नौज / Kannauj","दिल्ली / Delhi"],
+a:0
+},
+
+{
+q:"बौद्ध धर्म के संस्थापक कौन थे?",
+e:"Who founded Buddhism?",
+o:["महावीर / Mahavira","गौतम बुद्ध / Gautama Buddha","अशोक / Ashoka","कबीर / Kabir"],
+a:1
+},
+
+{
+q:"जैन धर्म के 24वें तीर्थंकर कौन थे?",
+e:"Who was the 24th Tirthankara of Jainism?",
+o:["पार्श्वनाथ / Parshvanatha","महावीर / Mahavira","ऋषभदेव / Rishabhanatha","नेमिनाथ / Neminatha"],
+a:1
+},
+
+{
+q:"भारत छोड़ो आंदोलन कब शुरू हुआ?",
+e:"When was the Quit India Movement launched?",
+o:["1930","1935","1942","1947"],
+a:2
+},
+
+{
+q:"दांडी मार्च किस वर्ष हुआ?",
+e:"In which year did the Dandi March take place?",
+o:["1920","1930","1940","1942"],
+a:1
+},
+
+{
+q:"जलियांवाला बाग हत्याकांड कब हुआ?",
+e:"When did the Jallianwala Bagh massacre occur?",
+o:["1917","1919","1921","1930"],
+a:1
+},
+
+{
+q:"महात्मा गांधी भारत कब लौटे?",
+e:"When did Mahatma Gandhi return to India?",
+o:["1915","1917","1920","1930"],
+a:0
+},
+
+{
+q:"सुभाष चंद्र बोस ने आजाद हिंद फौज से किस रूप में प्रसिद्धि पाई?",
+e:"Subhas Chandra Bose became famous as the leader of which force?",
+o:["आज़ाद हिंद फौज / Indian National Army","रॉयल इंडियन नेवी / Royal Indian Navy","ब्रिटिश सेना / British Army","कांग्रेस सेना / Congress Army"],
+a:0
+},
+
+{
+q:"भारत के अंतिम वायसराय कौन थे?",
+e:"Who was the last Viceroy of India?",
+o:["लॉर्ड कर्जन / Lord Curzon","लॉर्ड माउंटबेटन / Lord Mountbatten","लॉर्ड इरविन / Lord Irwin","लॉर्ड वेवेल / Lord Wavell"],
+a:1
+},
+
+/* =========================
+   SCIENCE
+========================= */
+
+{
+q:"जल का रासायनिक सूत्र क्या है?",
+e:"What is the chemical formula of water?",
+o:["CO₂","H₂O","O₂","H₂"],
+a:1
+},
+
+{
+q:"ऑक्सीजन का रासायनिक प्रतीक क्या है?",
+e:"What is the chemical symbol for oxygen?",
+o:["Ox","O","Og","On"],
+a:1
+},
+
+{
+q:"कार्बन डाइऑक्साइड का सूत्र क्या है?",
+e:"What is the formula of carbon dioxide?",
+o:["CO","CO₂","C₂O","O₂C"],
+a:1
+},
+
+{
+q:"बल की SI इकाई क्या है?",
+e:"What is the SI unit of force?",
+o:["जूल / Joule","न्यूटन / Newton","वाट / Watt","पास्कल / Pascal"],
+a:1
+},
+
+{
+q:"ऊर्जा की SI इकाई क्या है?",
+e:"What is the SI unit of energy?",
+o:["जूल / Joule","न्यूटन / Newton","वाट / Watt","एम्पियर / Ampere"],
+a:0
+},
+
+{
+q:"विद्युत धारा की SI इकाई क्या है?",
+e:"What is the SI unit of electric current?",
+o:["वोल्ट / Volt","एम्पियर / Ampere","ओम / Ohm","वाट / Watt"],
+a:1
+},
+
+{
+q:"प्रतिरोध की SI इकाई क्या है?",
+e:"What is the SI unit of resistance?",
+o:["ओम / Ohm","वोल्ट / Volt","एम्पियर / Ampere","जूल / Joule"],
+a:0
+},
+
+{
+q:"प्रकाश की चाल लगभग कितनी है?",
+e:"What is the approximate speed of light?",
+o:["3×10⁶ m/s","3×10⁷ m/s","3×10⁸ m/s","3×10⁹ m/s"],
+a:2
+},
+
+{
+q:"मानव शरीर में रक्त को पंप करने वाला अंग कौन सा है?",
+e:"Which organ pumps blood in the human body?",
+o:["फेफड़ा / Lung","हृदय / Heart","यकृत / Liver","गुर्दा / Kidney"],
+a:1
+},
+
+{
+q:"मानव हृदय में कितने कक्ष होते हैं?",
+e:"How many chambers does the human heart have?",
+o:["2","3","4","5"],
+a:2
+},
+
+{
+q:"मानव शरीर का सबसे बड़ा अंग कौन सा है?",
+e:"What is the largest organ of the human body?",
+o:["हृदय / Heart","त्वचा / Skin","यकृत / Liver","फेफड़ा / Lung"],
+a:1
+},
+
+{
+q:"मानव शरीर का सबसे बड़ा आंतरिक अंग कौन सा है?",
+e:"What is the largest internal organ of the human body?",
+o:["यकृत / Liver","हृदय / Heart","फेफड़े / Lungs","गुर्दे / Kidneys"],
+a:0
+},
+
+{
+q:"विटामिन C की कमी से कौन सा रोग होता है?",
+e:"Deficiency of Vitamin C causes?",
+o:["स्कर्वी / Scurvy","रिकेट्स / Rickets","बेरी-बेरी / Beriberi","रातांधता / Night blindness"],
+a:0
+},
+
+{
+q:"विटामिन D की कमी से कौन सा रोग होता है?",
+e:"Deficiency of Vitamin D causes?",
+o:["स्कर्वी / Scurvy","रिकेट्स / Rickets","एनीमिया / Anemia","बेरी-बेरी / Beriberi"],
+a:1
+},
+
+{
+q:"रक्त का लाल रंग किसके कारण होता है?",
+e:"What gives blood its red color?",
+o:["प्लाज्मा / Plasma","हीमोग्लोबिन / Hemoglobin","प्लेटलेट्स / Platelets","इंसुलिन / Insulin"],
+a:1
+},
+
+/* =========================
+   SPACE
+========================= */
+
+{
+q:"सौरमंडल का सबसे बड़ा ग्रह कौन सा है?",
+e:"Which is the largest planet in the Solar System?",
+o:["पृथ्वी / Earth","बृहस्पति / Jupiter","शनि / Saturn","मंगल / Mars"],
+a:1
+},
+
+{
+q:"लाल ग्रह किसे कहा जाता है?",
+e:"Which planet is called the Red Planet?",
+o:["शुक्र / Venus","मंगल / Mars","बुध / Mercury","शनि / Saturn"],
+a:1
+},
+
+{
+q:"सौरमंडल का सबसे छोटा ग्रह कौन सा है?",
+e:"Which is the smallest planet in the Solar System?",
+o:["बुध / Mercury","मंगल / Mars","शुक्र / Venus","पृथ्वी / Earth"],
+a:0
+},
+
+{
+q:"पृथ्वी का प्राकृतिक उपग्रह कौन है?",
+e:"What is the natural satellite of Earth?",
+o:["सूर्य / Sun","चंद्रमा / Moon","मंगल / Mars","शुक्र / Venus"],
+a:1
+},
+
+{
+q:"सूर्य के सबसे निकट कौन सा ग्रह है?",
+e:"Which planet is closest to the Sun?",
+o:["शुक्र / Venus","बुध / Mercury","पृथ्वी / Earth","मंगल / Mars"],
+a:1
+},
+
+{
+q:"सूर्य से दूसरा ग्रह कौन सा है?",
+e:"Which is the second planet from the Sun?",
+o:["बुध / Mercury","शुक्र / Venus","पृथ्वी / Earth","मंगल / Mars"],
+a:1
+},
+
+{
+q:"पृथ्वी सूर्य की परिक्रमा लगभग कितने दिनों में करती है?",
+e:"Approximately how many days does Earth take to orbit the Sun?",
+o:["180","365","500","730"],
+a:1
+},
+
+{
+q:"चंद्रमा पृथ्वी की परिक्रमा लगभग कितने दिनों में करता है?",
+e:"Approximately how long does the Moon take to orbit Earth?",
+o:["7 days","27 days","60 days","365 days"],
+a:1
+},
+
+/* =========================
+   GEOGRAPHY WORLD
+========================= */
+
+{
+q:"विश्व का सबसे बड़ा महासागर कौन सा है?",
+e:"Which is the largest ocean in the world?",
+o:["अटलांटिक / Atlantic","प्रशांत / Pacific","हिंद / Indian","आर्कटिक / Arctic"],
+a:1
+},
+
+{
+q:"विश्व का सबसे छोटा महासागर कौन सा है?",
+e:"Which is the smallest ocean in the world?",
+o:["प्रशांत / Pacific","हिंद / Indian","आर्कटिक / Arctic","अटलांटिक / Atlantic"],
+a:2
+},
+
+{
+q:"विश्व का सबसे बड़ा महाद्वीप कौन सा है?",
+e:"Which is the largest continent?",
+o:["अफ्रीका / Africa","एशिया / Asia","यूरोप / Europe","उत्तर अमेरिका / North America"],
+a:1
+},
+
+{
+q:"विश्व का सबसे छोटा महाद्वीप कौन सा है?",
+e:"Which is the smallest continent?",
+o:["यूरोप / Europe","ऑस्ट्रेलिया / Australia","अंटार्कटिका / Antarctica","दक्षिण अमेरिका / South America"],
+a:1
+},
+
+{
+q:"सहारा मरुस्थल किस महाद्वीप में है?",
+e:"The Sahara Desert is located in which continent?",
+o:["एशिया / Asia","अफ्रीका / Africa","यूरोप / Europe","ऑस्ट्रेलिया / Australia"],
+a:1
+},
+
+{
+q:"भूमध्य रेखा का अक्षांश कितना है?",
+e:"What is the latitude of the Equator?",
+o:["0°","23.5°","66.5°","90°"],
+a:0
+},
+
+{
+q:"प्राइम मेरिडियन का देशांतर कितना है?",
+e:"What is the longitude of the Prime Meridian?",
+o:["0°","90°","180°","23.5°"],
+a:0
+},
+
+{
+q:"विश्व का सबसे ऊँचा पर्वत कौन सा है?",
+e:"Which is the highest mountain in the world?",
+o:["K2 / K2","एवरेस्ट / Everest","कंचनजंगा / Kanchenjunga","मकालू / Makalu"],
+a:1
+},
+
+{
+q:"नील नदी किस महाद्वीप में बहती है?",
+e:"The Nile River flows in which continent?",
+o:["एशिया / Asia","अफ्रीका / Africa","यूरोप / Europe","दक्षिण अमेरिका / South America"],
+a:1
+},
+
+{
+q:"अमेजन नदी किस महाद्वीप में है?",
+e:"The Amazon River is in which continent?",
+o:["एशिया / Asia","अफ्रीका / Africa","दक्षिण अमेरिका / South America","यूरोप / Europe"],
+a:2
+},
+
+/* =========================
+   POLITY
+========================= */
+
+{
+q:"भारतीय संविधान का संरक्षक किसे माना जाता है?",
+e:"Who is regarded as the guardian of the Constitution of India?",
+o:["संसद / Parliament","सर्वोच्च न्यायालय / Supreme Court","राष्ट्रपति / President","प्रधानमंत्री / Prime Minister"],
+a:1
+},
+
+{
+q:"भारत की संसद के कितने सदन हैं?",
+e:"How many Houses does the Parliament of India have?",
+o:["1","2","3","4"],
+a:1
+},
+
+{
+q:"लोकसभा का कार्यकाल सामान्यतः कितने वर्ष का होता है?",
+e:"What is the normal term of the Lok Sabha?",
+o:["4 years","5 years","6 years","7 years"],
+a:1
+},
+
+{
+q:"राज्यसभा का कार्यकाल कितना होता है?",
+e:"What is the term of the Rajya Sabha?",
+o:["4 years","5 years","Permanent House","7 years"],
+a:2
+},
+
+{
+q:"भारत का सर्वोच्च न्यायालय कहाँ स्थित है?",
+e:"Where is the Supreme Court of India located?",
+o:["मुंबई / Mumbai","नई दिल्ली / New Delhi","प्रयागराज / Prayagraj","जयपुर / Jaipur"],
+a:1
+},
+
+{
+q:"भारत के राष्ट्रपति का कार्यकाल कितने वर्ष का होता है?",
+e:"What is the term of the President of India?",
+o:["4 years","5 years","6 years","7 years"],
+a:1
+},
+
+{
+q:"भारत के प्रधानमंत्री की नियुक्ति कौन करता है?",
+e:"Who appoints the Prime Minister of India?",
+o:["राष्ट्रपति / President","मुख्यमंत्री / Chief Minister","मुख्य न्यायाधीश / Chief Justice","लोकसभा अध्यक्ष / Speaker"],
+a:0
+},
+
+{
+q:"लोकसभा की अध्यक्षता कौन करता है?",
+e:"Who presides over the Lok Sabha?",
+o:["प्रधानमंत्री / Prime Minister","राष्ट्रपति / President","लोकसभा अध्यक्ष / Speaker","उपराष्ट्रपति / Vice President"],
+a:2
+},
+
+{
+q:"राज्यसभा का सभापति कौन होता है?",
+e:"Who is the Chairman of the Rajya Sabha?",
+o:["प्रधानमंत्री / Prime Minister","उपराष्ट्रपति / Vice President","राष्ट्रपति / President","लोकसभा अध्यक्ष / Speaker"],
+a:1
+},
+
+{
+q:"भारत के उपराष्ट्रपति का कार्यकाल कितने वर्ष का है?",
+e:"What is the term of the Vice President of India?",
+o:["4 years","5 years","6 years","7 years"],
+a:1
+},
+
+/* =========================
+   ECONOMICS
+========================= */
+
+{
+q:"भारतीय रिजर्व बैंक की स्थापना कब हुई?",
+e:"When was the Reserve Bank of India established?",
+o:["1930","1935","1940","1947"],
+a:1
+},
+
+{
+q:"भारत की मुद्रा क्या है?",
+e:"What is the currency of India?",
+o:["रुपया / Rupee","डॉलर / Dollar","येन / Yen","पाउंड / Pound"],
+a:0
+},
+
+{
+q:"GDP का पूरा नाम क्या है?",
+e:"What is the full form of GDP?",
+o:["Gross Domestic Product","General Domestic Price","Gross Development Product","General Development Plan"],
+a:0
+},
+
+{
+q:"GST का पूरा नाम क्या है?",
+e:"What is the full form of GST?",
+o:["Goods and Services Tax","General Sales Tax","Government Service Tax","Goods Supply Tariff"],
+a:0
+},
+
+{
+q:"GST भारत में कब लागू हुआ?",
+e:"When was GST implemented in India?",
+o:["2015","2016","2017","2018"],
+a:2
+},
+
+{
+q:"भारत में केंद्रीय बजट कौन प्रस्तुत करता है?",
+e:"Who presents the Union Budget in India?",
+o:["प्रधानमंत्री / Prime Minister","वित्त मंत्री / Finance Minister","गृह मंत्री / Home Minister","राष्ट्रपति / President"],
+a:1
+},
+
+{
+q:"NITI Aayog ने किस संस्था का स्थान लिया?",
+e:"NITI Aayog replaced which institution?",
+o:["RBI","Planning Commission","Finance Commission","Election Commission"],
+a:1
+},
+
+{
+q:"भारत का केंद्रीय बैंक कौन सा है?",
+e:"What is the central bank of India?",
+o:["SBI","RBI","PNB","SEBI"],
+a:1
+},
+
+/* =========================
+   COMPUTER
+========================= */
+
+{
+q:"CPU का पूरा नाम क्या है?",
+e:"What is the full form of CPU?",
+o:["Central Processing Unit","Central Program Unit","Computer Processing Unit","Control Processing Unit"],
+a:0
+},
+
+{
+q:"RAM का पूरा नाम क्या है?",
+e:"What is the full form of RAM?",
+o:["Read Access Memory","Random Access Memory","Run Access Memory","Rapid Access Memory"],
+a:1
+},
+
+{
+q:"ROM का पूरा नाम क्या है?",
+e:"What is the full form of ROM?",
+o:["Read Only Memory","Run Only Memory","Random Only Memory","Read Open Memory"],
+a:0
+},
+
+{
+q:"कंप्यूटर का मस्तिष्क किसे कहा जाता है?",
+e:"What is called the brain of a computer?",
+o:["Monitor","CPU","Keyboard","Mouse"],
+a:1
+},
+
+{
+q:"इनमें से कौन input device है?",
+e:"Which of these is an input device?",
+o:["Monitor","Printer","Keyboard","Speaker"],
+a:2
+},
+ {
+q:"भारत का सबसे ऊँचा नागरिक सम्मान कौन सा है?",
+e:"What is the highest civilian award of India?",
+o:["पद्म श्री / Padma Shri","पद्म भूषण / Padma Bhushan","भारत रत्न / Bharat Ratna","पद्म विभूषण / Padma Vibhushan"],
+a:2
+},
+
+{
+q:"भारतीय संविधान में मौलिक अधिकार किस भाग में हैं?",
+e:"Fundamental Rights are mentioned in which Part?",
+o:["भाग I / Part I","भाग II / Part II","भाग III / Part III","भाग IV / Part IV"],
+a:2
+},
+
+{
+q:"राज्य के नीति निदेशक तत्व किस भाग में हैं?",
+e:"Directive Principles of State Policy are in which Part?",
+o:["Part II","Part III","Part IV","Part V"],
+a:2
+},
+
+{
+q:"मौलिक कर्तव्य किस संविधान संशोधन द्वारा जोड़े गए?",
+e:"Fundamental Duties were added by which Constitutional Amendment?",
+o:["42वां / 42nd","44वां / 44th","52वां / 52nd","73वां / 73rd"],
+a:0
+},
+
+{
+q:"भारत में मतदान की न्यूनतम आयु कितनी है?",
+e:"What is the minimum voting age in India?",
+o:["16 वर्ष / 16 years","18 वर्ष / 18 years","21 वर्ष / 21 years","25 वर्ष / 25 years"],
+a:1
+},
+
+{
+q:"भारत का निर्वाचन आयोग कैसी संस्था है?",
+e:"What kind of body is the Election Commission of India?",
+o:["संवैधानिक संस्था / Constitutional Body","निजी संस्था / Private Body","न्यायिक संस्था / Judicial Body","गैर-सरकारी संस्था / NGO"],
+a:0
+},
+
+{
+q:"पंचायती राज व्यवस्था कितने स्तरों की है?",
+e:"How many levels are there in the Panchayati Raj system?",
+o:["2","3","4","5"],
+a:1
+},
+
+{
+q:"73वां संविधान संशोधन किससे संबंधित है?",
+e:"The 73rd Constitutional Amendment is related to?",
+o:["नगरपालिकाएं / Municipalities","पंचायती राज / Panchayati Raj","संसद / Parliament","सर्वोच्च न्यायालय / Supreme Court"],
+a:1
+},
+
+{
+q:"74वां संविधान संशोधन किससे संबंधित है?",
+e:"The 74th Constitutional Amendment is related to?",
+o:["नगरपालिकाएं / Municipalities","पंचायती राज / Panchayati Raj","लोकसभा / Lok Sabha","राज्यसभा / Rajya Sabha"],
+a:0
+},
+
+{
+q:"संविधान सभा के अध्यक्ष कौन थे?",
+e:"Who was the President of the Constituent Assembly?",
+o:["डॉ. राजेंद्र प्रसाद / Dr. Rajendra Prasad","डॉ. बी. आर. अंबेडकर / Dr. B. R. Ambedkar","जवाहरलाल नेहरू / Jawaharlal Nehru","सरदार पटेल / Sardar Patel"],
+a:0
+}, 
+  {
+q:"संविधान की प्रारूप समिति के अध्यक्ष कौन थे?",
+e:"Who was the Chairman of the Drafting Committee?",
+o:["डॉ. राजेंद्र प्रसाद / Dr. Rajendra Prasad","डॉ. बी. आर. अंबेडकर / Dr. B. R. Ambedkar","जवाहरलाल नेहरू / Jawaharlal Nehru","सरदार पटेल / Sardar Patel"],
+a:1
+},
+
+{
+q:"भारत के संविधान में कितनी अनुसूचियां हैं?",
+e:"How many Schedules are there in the Constitution of India?",
+o:["10","11","12","13"],
+a:2
+},
+
+{
+q:"अशोक चक्र में कितनी तीलियां होती हैं?",
+e:"How many spokes are there in the Ashoka Chakra?",
+o:["20","24","28","32"],
+a:1
+},
+
+{
+q:"सत्यमेव जयते किस उपनिषद से लिया गया है?",
+e:"Satyameva Jayate is taken from which Upanishad?",
+o:["ईश उपनिषद / Isha Upanishad","मुण्डक उपनिषद / Mundaka Upanishad","केन उपनिषद / Kena Upanishad","कठ उपनिषद / Katha Upanishad"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय ध्वज किसने डिजाइन किया था?",
+e:"Who designed the National Flag of India?",
+o:["पिंगली वेंकैया / Pingali Venkayya","रवींद्रनाथ टैगोर / Rabindranath Tagore","महात्मा गांधी / Mahatma Gandhi","बंकिमचंद्र चट्टोपाध्याय / Bankim Chandra Chattopadhyay"],
+a:0
+},
+
+{
+q:"जन गण मन के रचयिता कौन थे?",
+e:"Who composed Jana Gana Mana?",
+o:["बंकिमचंद्र चट्टोपाध्याय / Bankim Chandra Chattopadhyay","रवींद्रनाथ टैगोर / Rabindranath Tagore","सरोजिनी नायडू / Sarojini Naidu","सुभद्रा कुमारी चौहान / Subhadra Kumari Chauhan"],
+a:1
+},
+
+{
+q:"वंदे मातरम् के रचयिता कौन थे?",
+e:"Who wrote Vande Mataram?",
+o:["रवींद्रनाथ टैगोर / Rabindranath Tagore","बंकिमचंद्र चट्टोपाध्याय / Bankim Chandra Chattopadhyay","महात्मा गांधी / Mahatma Gandhi","प्रेमचंद / Premchand"],
+a:1
+},
+
+{
+q:"सिंधु घाटी सभ्यता का प्रमुख बंदरगाह कौन सा था?",
+e:"Which was a major port city of the Indus Valley Civilization?",
+o:["लोथल / Lothal","हड़प्पा / Harappa","कालीबंगा / Kalibangan","धोलावीरा / Dholavira"],
+a:0
+},
+
+{
+q:"गुप्त काल को किस नाम से जाना जाता है?",
+e:"The Gupta period is known as?",
+o:["अंधकार युग / Dark Age","स्वर्ण युग / Golden Age","आधुनिक युग / Modern Age","लौह युग / Iron Age"],
+a:1
+},
+
+{
+q:"आर्यभट्ट किस क्षेत्र के लिए प्रसिद्ध थे?",
+e:"Aryabhata was famous for which field?",
+o:["संगीत / Music","गणित और खगोल विज्ञान / Mathematics and Astronomy","राजनीति / Politics","चिकित्सा / Medicine"],
+a:1
+},
+  {
+q:"नालंदा विश्वविद्यालय की स्थापना किसने की थी?",
+e:"Who founded Nalanda University?",
+o:["कुमारगुप्त प्रथम / Kumaragupta I","अशोक / Ashoka","हर्षवर्धन / Harshavardhana","चंद्रगुप्त मौर्य / Chandragupta Maurya"],
+a:0
+},
+
+{
+q:"हर्षवर्धन की राजधानी कौन सी थी?",
+e:"What was the capital of Harshavardhana?",
+o:["कन्नौज / Kannauj","पाटलिपुत्र / Pataliputra","दिल्ली / Delhi","उज्जैन / Ujjain"],
+a:0
+},
+
+{
+q:"कुतुब मीनार का निर्माण किसने शुरू कराया?",
+e:"Who started the construction of Qutub Minar?",
+o:["इल्तुतमिश / Iltutmish","कुतुबुद्दीन ऐबक / Qutb-ud-din Aibak","अलाउद्दीन खिलजी / Alauddin Khalji","बलबन / Balban"],
+a:1
+},
+
+{
+q:"मुगल साम्राज्य का संस्थापक कौन था?",
+e:"Who founded the Mughal Empire?",
+o:["अकबर / Akbar","बाबर / Babur","हुमायूं / Humayun","जहांगीर / Jahangir"],
+a:1
+},
+
+{
+q:"अकबर का जन्म कहाँ हुआ था?",
+e:"Where was Akbar born?",
+o:["आगरा / Agra","उमरकोट / Umarkot","दिल्ली / Delhi","लाहौर / Lahore"],
+a:1
+},
+
+{
+q:"अकबर के नवरत्नों में कौन शामिल थे?",
+e:"Who was among the Navratnas of Akbar?",
+o:["तानसेन / Tansen","शिवाजी / Shivaji","राणा प्रताप / Rana Pratap","गुरु गोविंद सिंह / Guru Gobind Singh"],
+a:0
+},
+
+{
+q:"ताजमहल किसने बनवाया था?",
+e:"Who built the Taj Mahal?",
+o:["अकबर / Akbar","शाहजहां / Shah Jahan","जहांगीर / Jahangir","औरंगजेब / Aurangzeb"],
+a:1
+},
+
+{
+q:"शिवाजी के गुरु कौन थे?",
+e:"Who was the spiritual guide of Shivaji?",
+o:["समर्थ रामदास / Samarth Ramdas","कबीर / Kabir","गुरु नानक / Guru Nanak","स्वामी दयानंद / Swami Dayanand"],
+a:0
+},
+
+{
+q:"सिख धर्म के संस्थापक कौन थे?",
+e:"Who founded Sikhism?",
+o:["गुरु अर्जन देव / Guru Arjan Dev","गुरु नानक देव / Guru Nanak Dev","गुरु गोविंद सिंह / Guru Gobind Singh","गुरु तेग बहादुर / Guru Tegh Bahadur"],
+a:1
+},
+
+{
+q:"1857 का विद्रोह कहाँ से शुरू हुआ?",
+e:"Where did the Revolt of 1857 begin?",
+o:["दिल्ली / Delhi","मेरठ / Meerut","कानपुर / Kanpur","लखनऊ / Lucknow"],
+a:1
+},
+  {
+q:"1857 के विद्रोह में झांसी की रानी कौन थीं?",
+e:"Who led the revolt in Jhansi in 1857?",
+o:["रानी दुर्गावती / Rani Durgavati","रानी लक्ष्मीबाई / Rani Lakshmibai","बेगम हजरत महल / Begum Hazrat Mahal","सरोजिनी नायडू / Sarojini Naidu"],
+a:1
+},
+
+{
+q:"होम रूल आंदोलन से कौन जुड़ी थीं?",
+e:"Who was associated with the Home Rule Movement?",
+o:["एनी बेसेंट / Annie Besant","सरोजिनी नायडू / Sarojini Naidu","कस्तूरबा गांधी / Kasturba Gandhi","मीराबाई / Mirabai"],
+a:0
+},
+
+{
+q:"असहयोग आंदोलन किस वर्ष शुरू हुआ?",
+e:"In which year was the Non-Cooperation Movement launched?",
+o:["1915","1920","1930","1942"],
+a:1
+},
+
+{
+q:"चंपारण सत्याग्रह किससे संबंधित था?",
+e:"Champaran Satyagraha was related to?",
+o:["नील की खेती / Indigo cultivation","नमक / Salt","कपास / Cotton","चाय / Tea"],
+a:0
+},
+
+{
+q:"भारत के लौह पुरुष किसे कहा जाता है?",
+e:"Who is known as the Iron Man of India?",
+o:["सरदार पटेल / Sardar Patel","जवाहरलाल नेहरू / Jawaharlal Nehru","सुभाष चंद्र बोस / Subhas Chandra Bose","बाल गंगाधर तिलक / Bal Gangadhar Tilak"],
+a:0
+},
+
+{
+q:"भारत का मिसाइल मैन किसे कहा जाता है?",
+e:"Who is known as the Missile Man of India?",
+o:["विक्रम साराभाई / Vikram Sarabhai","ए. पी. जे. अब्दुल कलाम / A. P. J. Abdul Kalam","होमी भाभा / Homi Bhabha","सतीश धवन / Satish Dhawan"],
+a:1
+},
+
+{
+q:"भारत में हरित क्रांति के जनक किसे कहा जाता है?",
+e:"Who is known as the Father of the Green Revolution in India?",
+o:["एम. एस. स्वामीनाथन / M. S. Swaminathan","वर्गीज कुरियन / Verghese Kurien","नॉर्मन बोरलॉग / Norman Borlaug","होमी भाभा / Homi Bhabha"],
+a:0
+},
+
+{
+q:"भारत में श्वेत क्रांति के जनक किसे कहा जाता है?",
+e:"Who is known as the Father of the White Revolution in India?",
+o:["एम. एस. स्वामीनाथन / M. S. Swaminathan","वर्गीज कुरियन / Verghese Kurien","नॉर्मन बोरलॉग / Norman Borlaug","सी. सुब्रमण्यम / C. Subramaniam"],
+a:1
+},
+
+{
+q:"ऑपरेशन फ्लड किससे संबंधित था?",
+e:"Operation Flood was related to?",
+o:["दूध उत्पादन / Milk Production","गेहूं उत्पादन / Wheat Production","मछली उत्पादन / Fish Production","तेल उत्पादन / Oil Production"],
+a:0
+},
+
+{
+q:"भारतीय अंतरिक्ष अनुसंधान संगठन का संक्षिप्त नाम क्या है?",
+e:"What is the abbreviation of the Indian Space Research Organisation?",
+o:["ISRO","DRDO","NASA","BARC"],
+a:0
+},
+  {
+q:"ISRO का मुख्यालय कहाँ है?",
+e:"Where is the headquarters of ISRO?",
+o:["मुंबई / Mumbai","बेंगलुरु / Bengaluru","चेन्नई / Chennai","हैदराबाद / Hyderabad"],
+a:1
+},
+
+{
+q:"भारत का पहला उपग्रह कौन सा था?",
+e:"What was India's first satellite?",
+o:["आर्यभट्ट / Aryabhata","रोहिणी / Rohini","भास्कर / Bhaskara","इनसैट / INSAT"],
+a:0
+},
+
+{
+q:"DRDO का पूरा नाम क्या है?",
+e:"What is the full form of DRDO?",
+o:["Defence Research and Development Organisation","Department of Research and Defence Organisation","Defence Road Development Office","Digital Research and Development Organisation"],
+a:0
+},
+
+{
+q:"DNA का पूरा नाम क्या है?",
+e:"What is the full form of DNA?",
+o:["Deoxyribonucleic Acid","Dinucleic Acid","Deoxyribose Nuclear Acid","Dynamic Nucleic Acid"],
+a:0
+},
+
+{
+q:"RNA का पूरा नाम क्या है?",
+e:"What is the full form of RNA?",
+o:["Ribonucleic Acid","Ribose Nuclear Acid","Rapid Nucleic Acid","Ribosomal Nuclear Atom"],
+a:0
+},
+
+{
+q:"कोशिका का नियंत्रण केंद्र किसे कहा जाता है?",
+e:"What is called the control center of a cell?",
+o:["नाभिक / Nucleus","माइटोकॉन्ड्रिया / Mitochondria","राइबोसोम / Ribosome","कोशिका झिल्ली / Cell Membrane"],
+a:0
+},
+
+{
+q:"कोशिका का पावरहाउस किसे कहा जाता है?",
+e:"What is called the powerhouse of the cell?",
+o:["नाभिक / Nucleus","माइटोकॉन्ड्रिया / Mitochondria","गोल्जी बॉडी / Golgi Body","राइबोसोम / Ribosome"],
+a:1
+},
+
+{
+q:"पौधों में प्रकाश संश्लेषण किस अंगक में होता है?",
+e:"Photosynthesis takes place in which organelle?",
+o:["माइटोकॉन्ड्रिया / Mitochondria","क्लोरोप्लास्ट / Chloroplast","नाभिक / Nucleus","राइबोसोम / Ribosome"],
+a:1
+},
+
+{
+q:"प्रकाश संश्लेषण के लिए किस गैस की आवश्यकता होती है?",
+e:"Which gas is required for photosynthesis?",
+o:["ऑक्सीजन / Oxygen","नाइट्रोजन / Nitrogen","कार्बन डाइऑक्साइड / Carbon Dioxide","हाइड्रोजन / Hydrogen"],
+a:2
+},
+
+{
+q:"मानव शरीर में सामान्यतः कितनी हड्डियां होती हैं?",
+e:"How many bones are there in an adult human body?",
+o:["196","206","216","226"],
+a:1
+},
+  {
+q:"मानव शरीर का सामान्य तापमान कितना माना जाता है?",
+e:"What is generally considered the normal human body temperature?",
+o:["35°C","37°C","39°C","41°C"],
+a:1
+},
+
+{
+q:"इंसुलिन किस अंग द्वारा बनाया जाता है?",
+e:"Which organ produces insulin?",
+o:["यकृत / Liver","अग्न्याशय / Pancreas","हृदय / Heart","गुर्दा / Kidney"],
+a:1
+},
+
+{
+q:"मधुमेह किस हार्मोन की कमी से संबंधित है?",
+e:"Diabetes is related to deficiency of which hormone?",
+o:["थायरॉक्सिन / Thyroxine","इंसुलिन / Insulin","एड्रेनालिन / Adrenaline","एस्ट्रोजन / Estrogen"],
+a:1
+},
+
+{
+q:"रक्तचाप मापने के यंत्र को क्या कहते हैं?",
+e:"What is the instrument used to measure blood pressure?",
+o:["थर्मामीटर / Thermometer","बैरोमीटर / Barometer","स्फिग्मोमैनोमीटर / Sphygmomanometer","हाइग्रोमीटर / Hygrometer"],
+a:2
+},
+
+{
+q:"तापमान मापने के लिए किस यंत्र का उपयोग किया जाता है?",
+e:"Which instrument is used to measure temperature?",
+o:["थर्मामीटर / Thermometer","बैरोमीटर / Barometer","अमीटर / Ammeter","वोल्टमीटर / Voltmeter"],
+a:0
+},
+
+{
+q:"वायुदाब मापने का यंत्र कौन सा है?",
+e:"Which instrument measures atmospheric pressure?",
+o:["बैरोमीटर / Barometer","थर्मामीटर / Thermometer","हाइग्रोमीटर / Hygrometer","लैक्टोमीटर / Lactometer"],
+a:0
+},
+
+{
+q:"वायु में सर्वाधिक मात्रा में कौन सी गैस होती है?",
+e:"Which gas is most abundant in the atmosphere?",
+o:["ऑक्सीजन / Oxygen","नाइट्रोजन / Nitrogen","कार्बन डाइऑक्साइड / Carbon Dioxide","हाइड्रोजन / Hydrogen"],
+a:1
+},
+
+{
+q:"ओजोन का रासायनिक सूत्र क्या है?",
+e:"What is the chemical formula of ozone?",
+o:["O₂","O₃","CO₂","H₂O"],
+a:1
+},
+
+{
+q:"अम्ल का pH सामान्यतः कितना होता है?",
+e:"What is the pH of an acid generally?",
+o:["7 से अधिक / More than 7","7 से कम / Less than 7","ठीक 7 / Exactly 7","14 से अधिक / More than 14"],
+a:1
+},
+
+{
+q:"शुद्ध जल का pH कितना होता है?",
+e:"What is the pH of pure water?",
+o:["5","6","7","8"],
+a:2
+},
+  {
+q:"ध्वनि की चाल किस माध्यम में सबसे अधिक होती है?",
+e:"In which medium does sound travel fastest?",
+o:["वायु / Air","जल / Water","ठोस / Solids","निर्वात / Vacuum"],
+a:2
+},
+
+{
+q:"ध्वनि निर्वात में कैसी चलती है?",
+e:"How does sound travel in a vacuum?",
+o:["बहुत तेज / Very fast","धीमी / Slowly","नहीं चलती / Does not travel","प्रकाश की तरह / Like light"],
+a:2
+},
+
+{
+q:"विद्युत का अच्छा चालक कौन सा है?",
+e:"Which is a good conductor of electricity?",
+o:["रबर / Rubber","लकड़ी / Wood","तांबा / Copper","प्लास्टिक / Plastic"],
+a:2
+},
+
+{
+q:"प्रकाश के परावर्तन का नियम किससे संबंधित है?",
+e:"The law of reflection is related to?",
+o:["प्रकाश / Light","ध्वनि / Sound","ऊष्मा / Heat","विद्युत / Electricity"],
+a:0
+},
+
+{
+q:"निकट दृष्टिदोष को किस लेंस से ठीक किया जाता है?",
+e:"Which lens corrects myopia?",
+o:["उत्तल / Convex","अवतल / Concave","द्विफोकसी / Bifocal","बेलनाकार / Cylindrical"],
+a:1
+},
+
+{
+q:"दूर दृष्टिदोष को किस लेंस से ठीक किया जाता है?",
+e:"Which lens corrects hypermetropia?",
+o:["अवतल / Concave","उत्तल / Convex","समतल / Plane","बेलनाकार / Cylindrical"],
+a:1
+},
+
+{
+q:"लेंस की शक्ति की SI इकाई क्या है?",
+e:"What is the SI unit of lens power?",
+o:["मीटर / Meter","डायोप्टर / Dioptre","न्यूटन / Newton","जूल / Joule"],
+a:1
+},
+
+{
+q:"हरा पौधा किस प्रकार का पोषण करता है?",
+e:"What type of nutrition do green plants have?",
+o:["परपोषी / Heterotrophic","स्वपोषी / Autotrophic","मृतजीवी / Saprophytic","परजीवी / Parasitic"],
+a:1
+},
+
+{
+q:"विश्व का सबसे बड़ा गर्म मरुस्थल कौन सा है?",
+e:"Which is the largest hot desert in the world?",
+o:["गोबी / Gobi","सहारा / Sahara","थार / Thar","कालाहारी / Kalahari"],
+a:1
+},
+
+{
+q:"विश्व की सबसे लंबी नदी के रूप में सामान्यतः किसे जाना जाता है?",
+e:"Which river is commonly known as the longest river in the world?",
+o:["अमेजन / Amazon","नील / Nile","यांग्त्सी / Yangtze","मिसीसिपी / Mississippi"],
+a:1
+},
+  {
+q:"जापान की राजधानी क्या है?",
+e:"What is the capital of Japan?",
+o:["बीजिंग / Beijing","टोक्यो / Tokyo","सियोल / Seoul","बैंकॉक / Bangkok"],
+a:1
+},
+
+{
+q:"चीन की राजधानी क्या है?",
+e:"What is the capital of China?",
+o:["शंघाई / Shanghai","बीजिंग / Beijing","हांगकांग / Hong Kong","नानजिंग / Nanjing"],
+a:1
+},
+
+{
+q:"रूस की राजधानी क्या है?",
+e:"What is the capital of Russia?",
+o:["मॉस्को / Moscow","कीव / Kyiv","मिन्स्क / Minsk","वारसॉ / Warsaw"],
+a:0
+},
+
+{
+q:"फ्रांस की राजधानी क्या है?",
+e:"What is the capital of France?",
+o:["रोम / Rome","पेरिस / Paris","बर्लिन / Berlin","मैड्रिड / Madrid"],
+a:1
+},
+
+{
+q:"इटली की राजधानी क्या है?",
+e:"What is the capital of Italy?",
+o:["पेरिस / Paris","रोम / Rome","वियना / Vienna","एथेंस / Athens"],
+a:1
+},
+
+{
+q:"ऑस्ट्रेलिया की राजधानी क्या है?",
+e:"What is the capital of Australia?",
+o:["सिडनी / Sydney","मेलबर्न / Melbourne","कैनबरा / Canberra","पर्थ / Perth"],
+a:2
+},
+
+{
+q:"नेपाल की राजधानी क्या है?",
+e:"What is the capital of Nepal?",
+o:["काठमांडू / Kathmandu","पोखरा / Pokhara","ललितपुर / Lalitpur","भक्तपुर / Bhaktapur"],
+a:0
+},
+
+{
+q:"भूटान की राजधानी क्या है?",
+e:"What is the capital of Bhutan?",
+o:["थिम्फू / Thimphu","पारो / Paro","ढाका / Dhaka","काठमांडू / Kathmandu"],
+a:0
+},
+
+{
+q:"बांग्लादेश की राजधानी क्या है?",
+e:"What is the capital of Bangladesh?",
+o:["ढाका / Dhaka","चटगांव / Chattogram","सिलहट / Sylhet","राजशाही / Rajshahi"],
+a:0
+},
+
+{
+q:"श्रीलंका की प्रशासनिक राजधानी क्या है?",
+e:"What is the administrative capital of Sri Lanka?",
+o:["कोलंबो / Colombo","श्री जयवर्धनेपुरा कोट्टे / Sri Jayawardenepura Kotte","कैंडी / Kandy","गाले / Galle"],
+a:1
+},
+  {
+q:"संयुक्त राष्ट्र संघ की स्थापना कब हुई?",
+e:"When was the United Nations established?",
+o:["1940","1945","1950","1955"],
+a:1
+},
+
+{
+q:"संयुक्त राष्ट्र संघ का मुख्यालय कहाँ है?",
+e:"Where is the headquarters of the United Nations?",
+o:["लंदन / London","न्यूयॉर्क / New York","पेरिस / Paris","जिनेवा / Geneva"],
+a:1
+},
+
+{
+q:"WHO का मुख्यालय कहाँ है?",
+e:"Where is the headquarters of WHO?",
+o:["पेरिस / Paris","जिनेवा / Geneva","न्यूयॉर्क / New York","रोम / Rome"],
+a:1
+},
+
+{
+q:"विश्व स्वास्थ्य संगठन का संक्षिप्त नाम क्या है?",
+e:"What is the abbreviation of World Health Organization?",
+o:["WHO","WTO","UNESCO","UNICEF"],
+a:0
+},
+
+{
+q:"UNESCO का मुख्यालय कहाँ है?",
+e:"Where is the headquarters of UNESCO?",
+o:["पेरिस / Paris","जिनेवा / Geneva","रोम / Rome","वियना / Vienna"],
+a:0
+},
+
+{
+q:"विश्व बैंक का मुख्यालय कहाँ है?",
+e:"Where is the headquarters of the World Bank?",
+o:["वॉशिंगटन डी.सी. / Washington D.C.","न्यूयॉर्क / New York","लंदन / London","पेरिस / Paris"],
+a:0
+},
+
+{
+q:"भारत की राष्ट्रीय नदी कौन सी है?",
+e:"Which is the National River of India?",
+o:["यमुना / Yamuna","गंगा / Ganga","गोदावरी / Godavari","नर्मदा / Narmada"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय कैलेंडर किस युग पर आधारित है?",
+e:"India's National Calendar is based on which era?",
+o:["विक्रम संवत / Vikram Samvat","शक संवत / Saka Era","हिजरी / Hijri","ग्रेगोरियन / Gregorian"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय खेल आधिकारिक रूप से कौन सा है?",
+e:"Which is officially the national sport of India?",
+o:["हॉकी / Hockey","क्रिकेट / Cricket","कबड्डी / Kabaddi","कोई आधिकारिक राष्ट्रीय खेल नहीं / No official national sport"],
+a:3
+},
+
+{
+q:"हॉकी में एक टीम में कितने खिलाड़ी मैदान पर होते हैं?",
+e:"How many players are on the field for one hockey team?",
+o:["9","10","11","12"],
+a:2
+},
+  {
+q:"क्रिकेट में एक टीम में कितने खिलाड़ी होते हैं?",
+e:"How many players are there in a cricket team?",
+o:["9","10","11","12"],
+a:2
+},
+
+{
+q:"फुटबॉल में एक टीम के कितने खिलाड़ी मैदान पर होते हैं?",
+e:"How many players are on the field for one football team?",
+o:["9","10","11","12"],
+a:2
+},
+
+{
+q:"कबड्डी में एक टीम के कितने खिलाड़ी मैदान पर होते हैं?",
+e:"How many players are on the court for one Kabaddi team?",
+o:["5","6","7","8"],
+a:2
+},
+
+{
+q:"शतरंज की बिसात में कितने खाने होते हैं?",
+e:"How many squares are there on a chessboard?",
+o:["32","48","64","81"],
+a:2
+},
+
+{
+q:"ओलंपिक खेलों के प्रतीक में कितने छल्ले होते हैं?",
+e:"How many rings are there in the Olympic symbol?",
+o:["4","5","6","7"],
+a:1
+},
+
+{
+q:"कंप्यूटर में डेटा की सबसे छोटी इकाई क्या है?",
+e:"What is the smallest unit of data in a computer?",
+o:["Byte","Bit","KB","MB"],
+a:1
+},
+
+{
+q:"1 Byte में कितने Bits होते हैं?",
+e:"How many bits are there in 1 Byte?",
+o:["4","8","16","32"],
+a:1
+},
+
+{
+q:"WWW का आविष्कार किसने किया?",
+e:"Who invented the World Wide Web?",
+o:["Bill Gates","Tim Berners-Lee","Steve Jobs","Charles Babbage"],
+a:1
+},
+
+{
+q:"कंप्यूटर का जनक किसे कहा जाता है?",
+e:"Who is known as the father of the computer?",
+o:["Charles Babbage","Alan Turing","Bill Gates","Tim Berners-Lee"],
+a:0
+},
+
+{
+q:"HTML का पूरा नाम क्या है?",
+e:"What is the full form of HTML?",
+o:["Hyper Text Markup Language","High Text Markup Language","Hyperlink Text Management Language","Home Tool Markup Language"],
+a:0
+},
+];
+
+/* =========================
+   SHOW QUESTIONS
+========================= */
+
+const questionBox = document.getElementById("questions");
+
+questions.forEach((item, index) => {
+
+    const card = document.createElement("div");
+    card.className = "question-card";
+
+    let optionsHTML = "";
+
+    item.o.forEach((option, optionIndex) => {
+        optionsHTML += `
+            <label>
+                <input type="radio" name="q${index}" value="${optionIndex}">
+                ${option}
+            </label>
+        `;
+    });
+
+    card.innerHTML = `
+        <h3>Q${index + 1}. ${item.q}</h3>
+        <p>${item.e}</p>
+
+        <div class="options">
+            ${optionsHTML}
+        </div>
+
+        <div class="answer-result" id="result${index}"></div>
+    `;
+
+    questionBox.appendChild(card);
+});
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+const submitButton = document.createElement("button");
+
+submitButton.textContent = "✅ Submit & Check Result";
+
+submitButton.style.display = "block";
+submitButton.style.margin = "25px auto";
+submitButton.style.padding = "12px 25px";
+submitButton.style.border = "none";
+submitButton.style.borderRadius = "8px";
+submitButton.style.background = "#2563eb";
+submitButton.style.color = "white";
+submitButton.style.fontSize = "16px";
+submitButton.style.cursor = "pointer";
+
+questionBox.after(submitButton);
+
+
+/* =========================
+   CHECK RESULT
+========================= */
+
+submitButton.addEventListener("click", function () {
+
+    let score = 0;
+
+    questions.forEach((item, index) => {
+
+        const selected = document.querySelector(
+            `input[name="q${index}"]:checked`
+        );
+
+        const result = document.getElementById(`result${index}`);
+
+        if (!selected) {
+
+            result.innerHTML = "⚠️ Answer not selected";
+            result.style.color = "orange";
+
+        } else {
+
+            const answer = Number(selected.value);
+
+            if (answer === item.a) {
+
+                score++;
+
+                result.innerHTML = "✅ Correct";
+
+                result.style.color = "green";
+
+            } else {
+
+                result.innerHTML =
+                    `❌ Wrong — Correct Answer: ${item.o[item.a]}`;
+
+                result.style.color = "red";
+            }
+        }
+    });
+
+
+    const total = questions.length;
+
+    alert(
+        `🎉 Test Completed!\n\nYour Score: ${score} / ${total}`
+    );
+
+});
+  </script>
+
+</body>
+</<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice - PrepaPlus</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .practice-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        .practice-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .question-card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .question-card h3 {
+            margin: 0 0 8px;
+        }
+
+        .question-card p {
+            margin: 0 0 12px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .options label {
+            padding: 9px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .options label:hover {
+            background: #f3f6ff;
+        }
+
+        @media (max-width: 600px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <h2>📘 PrepaPlus</h2>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+    </div>
+</nav>
+
+<div class="practice-container">
+
+    <div class="practice-title">
+        <h1>📝 Practice Test</h1>
+        <p>सामान्य ज्ञान | General Knowledge</p>
+    </div>
+
+    <div id="questions"></div>
+
+</div>
+
+<script>
+
+const questions = [
+
+/* =========================
+   INDIAN GK
+========================= */
+
+{
+q:"भारत की राजधानी क्या है?",
+e:"What is the capital of India?",
+o:["मुंबई / Mumbai","नई दिल्ली / New Delhi","कोलकाता / Kolkata","चेन्नई / Chennai"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय पशु कौन सा है?",
+e:"What is the national animal of India?",
+o:["शेर / Lion","बाघ / Tiger","हाथी / Elephant","हिरण / Deer"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय पक्षी कौन सा है?",
+e:"What is the national bird of India?",
+o:["कबूतर / Pigeon","मोर / Peacock","तोता / Parrot","कौआ / Crow"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय फूल कौन सा है?",
+e:"What is the national flower of India?",
+o:["गुलाब / Rose","कमल / Lotus","गेंदा / Marigold","चमेली / Jasmine"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय वृक्ष कौन सा है?",
+e:"What is the national tree of India?",
+o:["नीम / Neem","बरगद / Banyan","पीपल / Peepal","आम / Mango"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय फल कौन सा है?",
+e:"What is the national fruit of India?",
+o:["सेब / Apple","आम / Mango","केला / Banana","संतरा / Orange"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय जलीय जीव कौन सा है?",
+e:"What is the national aquatic animal of India?",
+o:["डॉल्फिन / Dolphin","व्हेल / Whale","मगरमच्छ / Crocodile","कछुआ / Turtle"],
+a:0
+},
+
+{
+q:"भारत का राष्ट्रीय गीत कौन सा है?",
+e:"What is the national song of India?",
+o:["जन गण मन / Jana Gana Mana","वंदे मातरम् / Vande Mataram","सारे जहाँ से अच्छा / Sare Jahan Se Achha","ऐ मेरे वतन के लोगों / Ae Mere Watan Ke Logon"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रगान कौन सा है?",
+e:"What is the national anthem of India?",
+o:["वंदे मातरम् / Vande Mataram","जन गण मन / Jana Gana Mana","सारे जहाँ से अच्छा / Sare Jahan Se Achha","हम होंगे कामयाब / We Shall Overcome"],
+a:1
+},
+
+{
+q:"भारत को स्वतंत्रता कब मिली?",
+e:"When did India get independence?",
+o:["15 अगस्त 1947 / 15 August 1947","26 जनवरी 1950 / 26 January 1950","26 नवंबर 1949 / 26 November 1949","2 अक्टूबर 1947 / 2 October 1947"],
+a:0
+},
+
+{
+q:"भारत का संविधान कब अपनाया गया?",
+e:"When was the Constitution of India adopted?",
+o:["15 अगस्त 1947","26 जनवरी 1950","26 नवंबर 1949","2 अक्टूबर 1950"],
+a:2
+},
+
+{
+q:"भारत गणतंत्र कब बना?",
+e:"When did India become a republic?",
+o:["15 अगस्त 1947","26 जनवरी 1950","26 नवंबर 1949","2 अक्टूबर 1950"],
+a:1
+},
+
+{
+q:"भारत के प्रथम प्रधानमंत्री कौन थे?",
+e:"Who was the first Prime Minister of India?",
+o:["महात्मा गांधी / Mahatma Gandhi","जवाहरलाल नेहरू / Jawaharlal Nehru","सरदार पटेल / Sardar Patel","राजेंद्र प्रसाद / Rajendra Prasad"],
+a:1
+},
+
+{
+q:"भारत के प्रथम राष्ट्रपति कौन थे?",
+e:"Who was the first President of India?",
+o:["डॉ. राजेंद्र प्रसाद / Dr. Rajendra Prasad","जवाहरलाल नेहरू / Jawaharlal Nehru","डॉ. राधाकृष्णन / Dr. Radhakrishnan","सरदार पटेल / Sardar Patel"],
+a:0
+},
+
+{
+q:"भारत का राष्ट्रीय चिन्ह कहाँ से लिया गया है?",
+e:"India's national emblem is taken from?",
+o:["लाल किला / Red Fort","सारनाथ के सिंह स्तंभ / Lion Capital of Sarnath","कुतुब मीनार / Qutub Minar","इंडिया गेट / India Gate"],
+a:1
+},
+
+/* =========================
+   STATES & GEOGRAPHY
+========================= */
+
+{
+q:"क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा राज्य कौन सा है?",
+e:"Which is the largest Indian state by area?",
+o:["महाराष्ट्र / Maharashtra","मध्य प्रदेश / Madhya Pradesh","राजस्थान / Rajasthan","उत्तर प्रदेश / Uttar Pradesh"],
+a:2
+},
+
+{
+q:"क्षेत्रफल की दृष्टि से भारत का सबसे छोटा राज्य कौन सा है?",
+e:"Which is the smallest Indian state by area?",
+o:["गोवा / Goa","सिक्किम / Sikkim","त्रिपुरा / Tripura","मणिपुर / Manipur"],
+a:0
+},
+
+{
+q:"भारत की सबसे लंबी नदी कौन सी है?",
+e:"Which is the longest river in India?",
+o:["यमुना / Yamuna","गंगा / Ganga","नर्मदा / Narmada","गोदावरी / Godavari"],
+a:1
+},
+
+{
+q:"भारत की सबसे ऊँची पर्वत चोटी कौन सी है?",
+e:"Which is the highest mountain peak in India?",
+o:["नंदा देवी / Nanda Devi","कंचनजंगा / Kanchenjunga","अनामुड़ी / Anamudi","धौलागिरी / Dhaulagiri"],
+a:1
+},
+
+{
+q:"भारत का सबसे बड़ा मरुस्थल कौन सा है?",
+e:"Which is the largest desert in India?",
+o:["थार / Thar","सहारा / Sahara","गोबी / Gobi","कालाहारी / Kalahari"],
+a:0
+},
+
+{
+q:"भारत का सबसे बड़ा राज्य जनसंख्या की दृष्टि से कौन सा है?",
+e:"Which is the most populous state of India?",
+o:["बिहार / Bihar","महाराष्ट्र / Maharashtra","उत्तर प्रदेश / Uttar Pradesh","पश्चिम बंगाल / West Bengal"],
+a:2
+},
+
+{
+q:"भारत में सबसे अधिक तटरेखा वाला राज्य कौन सा है?",
+e:"Which Indian state has the longest coastline?",
+o:["गुजरात / Gujarat","महाराष्ट्र / Maharashtra","तमिलनाडु / Tamil Nadu","केरल / Kerala"],
+a:0
+},
+
+{
+q:"गंगा नदी का उद्गम किस ग्लेशियर से होता है?",
+e:"The Ganga originates from which glacier?",
+o:["सियाचिन / Siachen","गंगोत्री / Gangotri","यमुनोत्री / Yamunotri","पिंडारी / Pindari"],
+a:1
+},
+
+{
+q:"यमुना नदी का उद्गम कहाँ से होता है?",
+e:"Where does the Yamuna originate?",
+o:["यमुनोत्री / Yamunotri","गंगोत्री / Gangotri","अमरकंटक / Amarkantak","मानसरोवर / Mansarovar"],
+a:0
+},
+
+{
+q:"नर्मदा नदी का उद्गम कहाँ है?",
+e:"Where does the Narmada originate?",
+o:["अमरकंटक / Amarkantak","नासिक / Nashik","हरिद्वार / Haridwar","पंचमढ़ी / Pachmarhi"],
+a:0
+},
+
+{
+q:"ब्रह्मपुत्र नदी भारत में किस राज्य से प्रवेश करती है?",
+e:"Through which state does the Brahmaputra enter India?",
+o:["असम / Assam","अरुणाचल प्रदेश / Arunachal Pradesh","सिक्किम / Sikkim","पश्चिम बंगाल / West Bengal"],
+a:1
+},
+
+{
+q:"कर्क रेखा भारत के कितने राज्यों से गुजरती है?",
+e:"Through how many Indian states does the Tropic of Cancer pass?",
+o:["6","7","8","9"],
+a:2
+},
+
+{
+q:"भारत में कुल कितने राज्य हैं?",
+e:"How many states are there in India?",
+o:["26","27","28","29"],
+a:2
+},
+
+{
+q:"भारत में कितने केंद्र शासित प्रदेश हैं?",
+e:"How many Union Territories are there in India?",
+o:["6","7","8","9"],
+a:2
+},
+
+{
+q:"अरुणाचल प्रदेश की राजधानी क्या है?",
+e:"What is the capital of Arunachal Pradesh?",
+o:["इटानगर / Itanagar","गंगटोक / Gangtok","दिसपुर / Dispur","कोहिमा / Kohima"],
+a:0
+},
+
+/* =========================
+   HISTORY
+========================= */
+
+{
+q:"भारतीय राष्ट्रीय कांग्रेस की स्थापना कब हुई?",
+e:"When was the Indian National Congress founded?",
+o:["1885","1905","1919","1942"],
+a:0
+},
+
+{
+q:"भारतीय राष्ट्रीय कांग्रेस के प्रथम अध्यक्ष कौन थे?",
+e:"Who was the first President of the Indian National Congress?",
+o:["डब्ल्यू. सी. बनर्जी / W. C. Bonnerjee","दादाभाई नौरोजी / Dadabhai Naoroji","बाल गंगाधर तिलक / Bal Gangadhar Tilak","गोपाल कृष्ण गोखले / Gopal Krishna Gokhale"],
+a:0
+},
+
+{
+q:"प्लासी का युद्ध किस वर्ष हुआ?",
+e:"In which year was the Battle of Plassey fought?",
+o:["1757","1761","1764","1772"],
+a:0
+},
+
+{
+q:"पानीपत की तीसरी लड़ाई किस वर्ष हुई?",
+e:"In which year was the Third Battle of Panipat fought?",
+o:["1757","1761","1764","1770"],
+a:1
+},
+
+{
+q:"मौर्य साम्राज्य के संस्थापक कौन थे?",
+e:"Who founded the Maurya Empire?",
+o:["अशोक / Ashoka","चंद्रगुप्त मौर्य / Chandragupta Maurya","बिंदुसार / Bindusara","हर्ष / Harsha"],
+a:1
+},
+
+{
+q:"सम्राट अशोक की राजधानी क्या थी?",
+e:"What was the capital of Emperor Ashoka?",
+o:["पाटलिपुत्र / Pataliputra","उज्जैन / Ujjain","कन्नौज / Kannauj","दिल्ली / Delhi"],
+a:0
+},
+
+{
+q:"बौद्ध धर्म के संस्थापक कौन थे?",
+e:"Who founded Buddhism?",
+o:["महावीर / Mahavira","गौतम बुद्ध / Gautama Buddha","अशोक / Ashoka","कबीर / Kabir"],
+a:1
+},
+
+{
+q:"जैन धर्म के 24वें तीर्थंकर कौन थे?",
+e:"Who was the 24th Tirthankara of Jainism?",
+o:["पार्श्वनाथ / Parshvanatha","महावीर / Mahavira","ऋषभदेव / Rishabhanatha","नेमिनाथ / Neminatha"],
+a:1
+},
+
+{
+q:"भारत छोड़ो आंदोलन कब शुरू हुआ?",
+e:"When was the Quit India Movement launched?",
+o:["1930","1935","1942","1947"],
+a:2
+},
+
+{
+q:"दांडी मार्च किस वर्ष हुआ?",
+e:"In which year did the Dandi March take place?",
+o:["1920","1930","1940","1942"],
+a:1
+},
+
+{
+q:"जलियांवाला बाग हत्याकांड कब हुआ?",
+e:"When did the Jallianwala Bagh massacre occur?",
+o:["1917","1919","1921","1930"],
+a:1
+},
+
+{
+q:"महात्मा गांधी भारत कब लौटे?",
+e:"When did Mahatma Gandhi return to India?",
+o:["1915","1917","1920","1930"],
+a:0
+},
+
+{
+q:"सुभाष चंद्र बोस ने आजाद हिंद फौज से किस रूप में प्रसिद्धि पाई?",
+e:"Subhas Chandra Bose became famous as the leader of which force?",
+o:["आज़ाद हिंद फौज / Indian National Army","रॉयल इंडियन नेवी / Royal Indian Navy","ब्रिटिश सेना / British Army","कांग्रेस सेना / Congress Army"],
+a:0
+},
+
+{
+q:"भारत के अंतिम वायसराय कौन थे?",
+e:"Who was the last Viceroy of India?",
+o:["लॉर्ड कर्जन / Lord Curzon","लॉर्ड माउंटबेटन / Lord Mountbatten","लॉर्ड इरविन / Lord Irwin","लॉर्ड वेवेल / Lord Wavell"],
+a:1
+},
+
+/* =========================
+   SCIENCE
+========================= */
+
+{
+q:"जल का रासायनिक सूत्र क्या है?",
+e:"What is the chemical formula of water?",
+o:["CO₂","H₂O","O₂","H₂"],
+a:1
+},
+
+{
+q:"ऑक्सीजन का रासायनिक प्रतीक क्या है?",
+e:"What is the chemical symbol for oxygen?",
+o:["Ox","O","Og","On"],
+a:1
+},
+
+{
+q:"कार्बन डाइऑक्साइड का सूत्र क्या है?",
+e:"What is the formula of carbon dioxide?",
+o:["CO","CO₂","C₂O","O₂C"],
+a:1
+},
+
+{
+q:"बल की SI इकाई क्या है?",
+e:"What is the SI unit of force?",
+o:["जूल / Joule","न्यूटन / Newton","वाट / Watt","पास्कल / Pascal"],
+a:1
+},
+
+{
+q:"ऊर्जा की SI इकाई क्या है?",
+e:"What is the SI unit of energy?",
+o:["जूल / Joule","न्यूटन / Newton","वाट / Watt","एम्पियर / Ampere"],
+a:0
+},
+
+{
+q:"विद्युत धारा की SI इकाई क्या है?",
+e:"What is the SI unit of electric current?",
+o:["वोल्ट / Volt","एम्पियर / Ampere","ओम / Ohm","वाट / Watt"],
+a:1
+},
+
+{
+q:"प्रतिरोध की SI इकाई क्या है?",
+e:"What is the SI unit of resistance?",
+o:["ओम / Ohm","वोल्ट / Volt","एम्पियर / Ampere","जूल / Joule"],
+a:0
+},
+
+{
+q:"प्रकाश की चाल लगभग कितनी है?",
+e:"What is the approximate speed of light?",
+o:["3×10⁶ m/s","3×10⁷ m/s","3×10⁸ m/s","3×10⁹ m/s"],
+a:2
+},
+
+{
+q:"मानव शरीर में रक्त को पंप करने वाला अंग कौन सा है?",
+e:"Which organ pumps blood in the human body?",
+o:["फेफड़ा / Lung","हृदय / Heart","यकृत / Liver","गुर्दा / Kidney"],
+a:1
+},
+
+{
+q:"मानव हृदय में कितने कक्ष होते हैं?",
+e:"How many chambers does the human heart have?",
+o:["2","3","4","5"],
+a:2
+},
+
+{
+q:"मानव शरीर का सबसे बड़ा अंग कौन सा है?",
+e:"What is the largest organ of the human body?",
+o:["हृदय / Heart","त्वचा / Skin","यकृत / Liver","फेफड़ा / Lung"],
+a:1
+},
+
+{
+q:"मानव शरीर का सबसे बड़ा आंतरिक अंग कौन सा है?",
+e:"What is the largest internal organ of the human body?",
+o:["यकृत / Liver","हृदय / Heart","फेफड़े / Lungs","गुर्दे / Kidneys"],
+a:0
+},
+
+{
+q:"विटामिन C की कमी से कौन सा रोग होता है?",
+e:"Deficiency of Vitamin C causes?",
+o:["स्कर्वी / Scurvy","रिकेट्स / Rickets","बेरी-बेरी / Beriberi","रातांधता / Night blindness"],
+a:0
+},
+
+{
+q:"विटामिन D की कमी से कौन सा रोग होता है?",
+e:"Deficiency of Vitamin D causes?",
+o:["स्कर्वी / Scurvy","रिकेट्स / Rickets","एनीमिया / Anemia","बेरी-बेरी / Beriberi"],
+a:1
+},
+
+{
+q:"रक्त का लाल रंग किसके कारण होता है?",
+e:"What gives blood its red color?",
+o:["प्लाज्मा / Plasma","हीमोग्लोबिन / Hemoglobin","प्लेटलेट्स / Platelets","इंसुलिन / Insulin"],
+a:1
+},
+
+/* =========================
+   SPACE
+========================= */
+
+{
+q:"सौरमंडल का सबसे बड़ा ग्रह कौन सा है?",
+e:"Which is the largest planet in the Solar System?",
+o:["पृथ्वी / Earth","बृहस्पति / Jupiter","शनि / Saturn","मंगल / Mars"],
+a:1
+},
+
+{
+q:"लाल ग्रह किसे कहा जाता है?",
+e:"Which planet is called the Red Planet?",
+o:["शुक्र / Venus","मंगल / Mars","बुध / Mercury","शनि / Saturn"],
+a:1
+},
+
+{
+q:"सौरमंडल का सबसे छोटा ग्रह कौन सा है?",
+e:"Which is the smallest planet in the Solar System?",
+o:["बुध / Mercury","मंगल / Mars","शुक्र / Venus","पृथ्वी / Earth"],
+a:0
+},
+
+{
+q:"पृथ्वी का प्राकृतिक उपग्रह कौन है?",
+e:"What is the natural satellite of Earth?",
+o:["सूर्य / Sun","चंद्रमा / Moon","मंगल / Mars","शुक्र / Venus"],
+a:1
+},
+
+{
+q:"सूर्य के सबसे निकट कौन सा ग्रह है?",
+e:"Which planet is closest to the Sun?",
+o:["शुक्र / Venus","बुध / Mercury","पृथ्वी / Earth","मंगल / Mars"],
+a:1
+},
+
+{
+q:"सूर्य से दूसरा ग्रह कौन सा है?",
+e:"Which is the second planet from the Sun?",
+o:["बुध / Mercury","शुक्र / Venus","पृथ्वी / Earth","मंगल / Mars"],
+a:1
+},
+
+{
+q:"पृथ्वी सूर्य की परिक्रमा लगभग कितने दिनों में करती है?",
+e:"Approximately how many days does Earth take to orbit the Sun?",
+o:["180","365","500","730"],
+a:1
+},
+
+{
+q:"चंद्रमा पृथ्वी की परिक्रमा लगभग कितने दिनों में करता है?",
+e:"Approximately how long does the Moon take to orbit Earth?",
+o:["7 days","27 days","60 days","365 days"],
+a:1
+},
+
+/* =========================
+   GEOGRAPHY WORLD
+========================= */
+
+{
+q:"विश्व का सबसे बड़ा महासागर कौन सा है?",
+e:"Which is the largest ocean in the world?",
+o:["अटलांटिक / Atlantic","प्रशांत / Pacific","हिंद / Indian","आर्कटिक / Arctic"],
+a:1
+},
+
+{
+q:"विश्व का सबसे छोटा महासागर कौन सा है?",
+e:"Which is the smallest ocean in the world?",
+o:["प्रशांत / Pacific","हिंद / Indian","आर्कटिक / Arctic","अटलांटिक / Atlantic"],
+a:2
+},
+
+{
+q:"विश्व का सबसे बड़ा महाद्वीप कौन सा है?",
+e:"Which is the largest continent?",
+o:["अफ्रीका / Africa","एशिया / Asia","यूरोप / Europe","उत्तर अमेरिका / North America"],
+a:1
+},
+
+{
+q:"विश्व का सबसे छोटा महाद्वीप कौन सा है?",
+e:"Which is the smallest continent?",
+o:["यूरोप / Europe","ऑस्ट्रेलिया / Australia","अंटार्कटिका / Antarctica","दक्षिण अमेरिका / South America"],
+a:1
+},
+
+{
+q:"सहारा मरुस्थल किस महाद्वीप में है?",
+e:"The Sahara Desert is located in which continent?",
+o:["एशिया / Asia","अफ्रीका / Africa","यूरोप / Europe","ऑस्ट्रेलिया / Australia"],
+a:1
+},
+
+{
+q:"भूमध्य रेखा का अक्षांश कितना है?",
+e:"What is the latitude of the Equator?",
+o:["0°","23.5°","66.5°","90°"],
+a:0
+},
+
+{
+q:"प्राइम मेरिडियन का देशांतर कितना है?",
+e:"What is the longitude of the Prime Meridian?",
+o:["0°","90°","180°","23.5°"],
+a:0
+},
+
+{
+q:"विश्व का सबसे ऊँचा पर्वत कौन सा है?",
+e:"Which is the highest mountain in the world?",
+o:["K2 / K2","एवरेस्ट / Everest","कंचनजंगा / Kanchenjunga","मकालू / Makalu"],
+a:1
+},
+
+{
+q:"नील नदी किस महाद्वीप में बहती है?",
+e:"The Nile River flows in which continent?",
+o:["एशिया / Asia","अफ्रीका / Africa","यूरोप / Europe","दक्षिण अमेरिका / South America"],
+a:1
+},
+
+{
+q:"अमेजन नदी किस महाद्वीप में है?",
+e:"The Amazon River is in which continent?",
+o:["एशिया / Asia","अफ्रीका / Africa","दक्षिण अमेरिका / South America","यूरोप / Europe"],
+a:2
+},
+
+/* =========================
+   POLITY
+========================= */
+
+{
+q:"भारतीय संविधान का संरक्षक किसे माना जाता है?",
+e:"Who is regarded as the guardian of the Constitution of India?",
+o:["संसद / Parliament","सर्वोच्च न्यायालय / Supreme Court","राष्ट्रपति / President","प्रधानमंत्री / Prime Minister"],
+a:1
+},
+
+{
+q:"भारत की संसद के कितने सदन हैं?",
+e:"How many Houses does the Parliament of India have?",
+o:["1","2","3","4"],
+a:1
+},
+
+{
+q:"लोकसभा का कार्यकाल सामान्यतः कितने वर्ष का होता है?",
+e:"What is the normal term of the Lok Sabha?",
+o:["4 years","5 years","6 years","7 years"],
+a:1
+},
+
+{
+q:"राज्यसभा का कार्यकाल कितना होता है?",
+e:"What is the term of the Rajya Sabha?",
+o:["4 years","5 years","Permanent House","7 years"],
+a:2
+},
+
+{
+q:"भारत का सर्वोच्च न्यायालय कहाँ स्थित है?",
+e:"Where is the Supreme Court of India located?",
+o:["मुंबई / Mumbai","नई दिल्ली / New Delhi","प्रयागराज / Prayagraj","जयपुर / Jaipur"],
+a:1
+},
+
+{
+q:"भारत के राष्ट्रपति का कार्यकाल कितने वर्ष का होता है?",
+e:"What is the term of the President of India?",
+o:["4 years","5 years","6 years","7 years"],
+a:1
+},
+
+{
+q:"भारत के प्रधानमंत्री की नियुक्ति कौन करता है?",
+e:"Who appoints the Prime Minister of India?",
+o:["राष्ट्रपति / President","मुख्यमंत्री / Chief Minister","मुख्य न्यायाधीश / Chief Justice","लोकसभा अध्यक्ष / Speaker"],
+a:0
+},
+
+{
+q:"लोकसभा की अध्यक्षता कौन करता है?",
+e:"Who presides over the Lok Sabha?",
+o:["प्रधानमंत्री / Prime Minister","राष्ट्रपति / President","लोकसभा अध्यक्ष / Speaker","उपराष्ट्रपति / Vice President"],
+a:2
+},
+
+{
+q:"राज्यसभा का सभापति कौन होता है?",
+e:"Who is the Chairman of the Rajya Sabha?",
+o:["प्रधानमंत्री / Prime Minister","उपराष्ट्रपति / Vice President","राष्ट्रपति / President","लोकसभा अध्यक्ष / Speaker"],
+a:1
+},
+
+{
+q:"भारत के उपराष्ट्रपति का कार्यकाल कितने वर्ष का है?",
+e:"What is the term of the Vice President of India?",
+o:["4 years","5 years","6 years","7 years"],
+a:1
+},
+
+/* =========================
+   ECONOMICS
+========================= */
+
+{
+q:"भारतीय रिजर्व बैंक की स्थापना कब हुई?",
+e:"When was the Reserve Bank of India established?",
+o:["1930","1935","1940","1947"],
+a:1
+},
+
+{
+q:"भारत की मुद्रा क्या है?",
+e:"What is the currency of India?",
+o:["रुपया / Rupee","डॉलर / Dollar","येन / Yen","पाउंड / Pound"],
+a:0
+},
+
+{
+q:"GDP का पूरा नाम क्या है?",
+e:"What is the full form of GDP?",
+o:["Gross Domestic Product","General Domestic Price","Gross Development Product","General Development Plan"],
+a:0
+},
+
+{
+q:"GST का पूरा नाम क्या है?",
+e:"What is the full form of GST?",
+o:["Goods and Services Tax","General Sales Tax","Government Service Tax","Goods Supply Tariff"],
+a:0
+},
+
+{
+q:"GST भारत में कब लागू हुआ?",
+e:"When was GST implemented in India?",
+o:["2015","2016","2017","2018"],
+a:2
+},
+
+{
+q:"भारत में केंद्रीय बजट कौन प्रस्तुत करता है?",
+e:"Who presents the Union Budget in India?",
+o:["प्रधानमंत्री / Prime Minister","वित्त मंत्री / Finance Minister","गृह मंत्री / Home Minister","राष्ट्रपति / President"],
+a:1
+},
+
+{
+q:"NITI Aayog ने किस संस्था का स्थान लिया?",
+e:"NITI Aayog replaced which institution?",
+o:["RBI","Planning Commission","Finance Commission","Election Commission"],
+a:1
+},
+
+{
+q:"भारत का केंद्रीय बैंक कौन सा है?",
+e:"What is the central bank of India?",
+o:["SBI","RBI","PNB","SEBI"],
+a:1
+},
+
+/* =========================
+   COMPUTER
+========================= */
+
+{
+q:"CPU का पूरा नाम क्या है?",
+e:"What is the full form of CPU?",
+o:["Central Processing Unit","Central Program Unit","Computer Processing Unit","Control Processing Unit"],
+a:0
+},
+
+{
+q:"RAM का पूरा नाम क्या है?",
+e:"What is the full form of RAM?",
+o:["Read Access Memory","Random Access Memory","Run Access Memory","Rapid Access Memory"],
+a:1
+},
+
+{
+q:"ROM का पूरा नाम क्या है?",
+e:"What is the full form of ROM?",
+o:["Read Only Memory","Run Only Memory","Random Only Memory","Read Open Memory"],
+a:0
+},
+
+{
+q:"कंप्यूटर का मस्तिष्क किसे कहा जाता है?",
+e:"What is called the brain of a computer?",
+o:["Monitor","CPU","Keyboard","Mouse"],
+a:1
+},
+
+{
+q:"इनमें से कौन input device है?",
+e:"Which of these is an input device?",
+o:["Monitor","Printer","Keyboard","Speaker"],
+a:2
+},
+ {
+q:"भारत का सबसे ऊँचा नागरिक सम्मान कौन सा है?",
+e:"What is the highest civilian award of India?",
+o:["पद्म श्री / Padma Shri","पद्म भूषण / Padma Bhushan","भारत रत्न / Bharat Ratna","पद्म विभूषण / Padma Vibhushan"],
+a:2
+},
+
+{
+q:"भारतीय संविधान में मौलिक अधिकार किस भाग में हैं?",
+e:"Fundamental Rights are mentioned in which Part?",
+o:["भाग I / Part I","भाग II / Part II","भाग III / Part III","भाग IV / Part IV"],
+a:2
+},
+
+{
+q:"राज्य के नीति निदेशक तत्व किस भाग में हैं?",
+e:"Directive Principles of State Policy are in which Part?",
+o:["Part II","Part III","Part IV","Part V"],
+a:2
+},
+
+{
+q:"मौलिक कर्तव्य किस संविधान संशोधन द्वारा जोड़े गए?",
+e:"Fundamental Duties were added by which Constitutional Amendment?",
+o:["42वां / 42nd","44वां / 44th","52वां / 52nd","73वां / 73rd"],
+a:0
+},
+
+{
+q:"भारत में मतदान की न्यूनतम आयु कितनी है?",
+e:"What is the minimum voting age in India?",
+o:["16 वर्ष / 16 years","18 वर्ष / 18 years","21 वर्ष / 21 years","25 वर्ष / 25 years"],
+a:1
+},
+
+{
+q:"भारत का निर्वाचन आयोग कैसी संस्था है?",
+e:"What kind of body is the Election Commission of India?",
+o:["संवैधानिक संस्था / Constitutional Body","निजी संस्था / Private Body","न्यायिक संस्था / Judicial Body","गैर-सरकारी संस्था / NGO"],
+a:0
+},
+
+{
+q:"पंचायती राज व्यवस्था कितने स्तरों की है?",
+e:"How many levels are there in the Panchayati Raj system?",
+o:["2","3","4","5"],
+a:1
+},
+
+{
+q:"73वां संविधान संशोधन किससे संबंधित है?",
+e:"The 73rd Constitutional Amendment is related to?",
+o:["नगरपालिकाएं / Municipalities","पंचायती राज / Panchayati Raj","संसद / Parliament","सर्वोच्च न्यायालय / Supreme Court"],
+a:1
+},
+
+{
+q:"74वां संविधान संशोधन किससे संबंधित है?",
+e:"The 74th Constitutional Amendment is related to?",
+o:["नगरपालिकाएं / Municipalities","पंचायती राज / Panchayati Raj","लोकसभा / Lok Sabha","राज्यसभा / Rajya Sabha"],
+a:0
+},
+
+{
+q:"संविधान सभा के अध्यक्ष कौन थे?",
+e:"Who was the President of the Constituent Assembly?",
+o:["डॉ. राजेंद्र प्रसाद / Dr. Rajendra Prasad","डॉ. बी. आर. अंबेडकर / Dr. B. R. Ambedkar","जवाहरलाल नेहरू / Jawaharlal Nehru","सरदार पटेल / Sardar Patel"],
+a:0
+}, 
+  {
+q:"संविधान की प्रारूप समिति के अध्यक्ष कौन थे?",
+e:"Who was the Chairman of the Drafting Committee?",
+o:["डॉ. राजेंद्र प्रसाद / Dr. Rajendra Prasad","डॉ. बी. आर. अंबेडकर / Dr. B. R. Ambedkar","जवाहरलाल नेहरू / Jawaharlal Nehru","सरदार पटेल / Sardar Patel"],
+a:1
+},
+
+{
+q:"भारत के संविधान में कितनी अनुसूचियां हैं?",
+e:"How many Schedules are there in the Constitution of India?",
+o:["10","11","12","13"],
+a:2
+},
+
+{
+q:"अशोक चक्र में कितनी तीलियां होती हैं?",
+e:"How many spokes are there in the Ashoka Chakra?",
+o:["20","24","28","32"],
+a:1
+},
+
+{
+q:"सत्यमेव जयते किस उपनिषद से लिया गया है?",
+e:"Satyameva Jayate is taken from which Upanishad?",
+o:["ईश उपनिषद / Isha Upanishad","मुण्डक उपनिषद / Mundaka Upanishad","केन उपनिषद / Kena Upanishad","कठ उपनिषद / Katha Upanishad"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय ध्वज किसने डिजाइन किया था?",
+e:"Who designed the National Flag of India?",
+o:["पिंगली वेंकैया / Pingali Venkayya","रवींद्रनाथ टैगोर / Rabindranath Tagore","महात्मा गांधी / Mahatma Gandhi","बंकिमचंद्र चट्टोपाध्याय / Bankim Chandra Chattopadhyay"],
+a:0
+},
+
+{
+q:"जन गण मन के रचयिता कौन थे?",
+e:"Who composed Jana Gana Mana?",
+o:["बंकिमचंद्र चट्टोपाध्याय / Bankim Chandra Chattopadhyay","रवींद्रनाथ टैगोर / Rabindranath Tagore","सरोजिनी नायडू / Sarojini Naidu","सुभद्रा कुमारी चौहान / Subhadra Kumari Chauhan"],
+a:1
+},
+
+{
+q:"वंदे मातरम् के रचयिता कौन थे?",
+e:"Who wrote Vande Mataram?",
+o:["रवींद्रनाथ टैगोर / Rabindranath Tagore","बंकिमचंद्र चट्टोपाध्याय / Bankim Chandra Chattopadhyay","महात्मा गांधी / Mahatma Gandhi","प्रेमचंद / Premchand"],
+a:1
+},
+
+{
+q:"सिंधु घाटी सभ्यता का प्रमुख बंदरगाह कौन सा था?",
+e:"Which was a major port city of the Indus Valley Civilization?",
+o:["लोथल / Lothal","हड़प्पा / Harappa","कालीबंगा / Kalibangan","धोलावीरा / Dholavira"],
+a:0
+},
+
+{
+q:"गुप्त काल को किस नाम से जाना जाता है?",
+e:"The Gupta period is known as?",
+o:["अंधकार युग / Dark Age","स्वर्ण युग / Golden Age","आधुनिक युग / Modern Age","लौह युग / Iron Age"],
+a:1
+},
+
+{
+q:"आर्यभट्ट किस क्षेत्र के लिए प्रसिद्ध थे?",
+e:"Aryabhata was famous for which field?",
+o:["संगीत / Music","गणित और खगोल विज्ञान / Mathematics and Astronomy","राजनीति / Politics","चिकित्सा / Medicine"],
+a:1
+},
+  {
+q:"नालंदा विश्वविद्यालय की स्थापना किसने की थी?",
+e:"Who founded Nalanda University?",
+o:["कुमारगुप्त प्रथम / Kumaragupta I","अशोक / Ashoka","हर्षवर्धन / Harshavardhana","चंद्रगुप्त मौर्य / Chandragupta Maurya"],
+a:0
+},
+
+{
+q:"हर्षवर्धन की राजधानी कौन सी थी?",
+e:"What was the capital of Harshavardhana?",
+o:["कन्नौज / Kannauj","पाटलिपुत्र / Pataliputra","दिल्ली / Delhi","उज्जैन / Ujjain"],
+a:0
+},
+
+{
+q:"कुतुब मीनार का निर्माण किसने शुरू कराया?",
+e:"Who started the construction of Qutub Minar?",
+o:["इल्तुतमिश / Iltutmish","कुतुबुद्दीन ऐबक / Qutb-ud-din Aibak","अलाउद्दीन खिलजी / Alauddin Khalji","बलबन / Balban"],
+a:1
+},
+
+{
+q:"मुगल साम्राज्य का संस्थापक कौन था?",
+e:"Who founded the Mughal Empire?",
+o:["अकबर / Akbar","बाबर / Babur","हुमायूं / Humayun","जहांगीर / Jahangir"],
+a:1
+},
+
+{
+q:"अकबर का जन्म कहाँ हुआ था?",
+e:"Where was Akbar born?",
+o:["आगरा / Agra","उमरकोट / Umarkot","दिल्ली / Delhi","लाहौर / Lahore"],
+a:1
+},
+
+{
+q:"अकबर के नवरत्नों में कौन शामिल थे?",
+e:"Who was among the Navratnas of Akbar?",
+o:["तानसेन / Tansen","शिवाजी / Shivaji","राणा प्रताप / Rana Pratap","गुरु गोविंद सिंह / Guru Gobind Singh"],
+a:0
+},
+
+{
+q:"ताजमहल किसने बनवाया था?",
+e:"Who built the Taj Mahal?",
+o:["अकबर / Akbar","शाहजहां / Shah Jahan","जहांगीर / Jahangir","औरंगजेब / Aurangzeb"],
+a:1
+},
+
+{
+q:"शिवाजी के गुरु कौन थे?",
+e:"Who was the spiritual guide of Shivaji?",
+o:["समर्थ रामदास / Samarth Ramdas","कबीर / Kabir","गुरु नानक / Guru Nanak","स्वामी दयानंद / Swami Dayanand"],
+a:0
+},
+
+{
+q:"सिख धर्म के संस्थापक कौन थे?",
+e:"Who founded Sikhism?",
+o:["गुरु अर्जन देव / Guru Arjan Dev","गुरु नानक देव / Guru Nanak Dev","गुरु गोविंद सिंह / Guru Gobind Singh","गुरु तेग बहादुर / Guru Tegh Bahadur"],
+a:1
+},
+
+{
+q:"1857 का विद्रोह कहाँ से शुरू हुआ?",
+e:"Where did the Revolt of 1857 begin?",
+o:["दिल्ली / Delhi","मेरठ / Meerut","कानपुर / Kanpur","लखनऊ / Lucknow"],
+a:1
+},
+  {
+q:"1857 के विद्रोह में झांसी की रानी कौन थीं?",
+e:"Who led the revolt in Jhansi in 1857?",
+o:["रानी दुर्गावती / Rani Durgavati","रानी लक्ष्मीबाई / Rani Lakshmibai","बेगम हजरत महल / Begum Hazrat Mahal","सरोजिनी नायडू / Sarojini Naidu"],
+a:1
+},
+
+{
+q:"होम रूल आंदोलन से कौन जुड़ी थीं?",
+e:"Who was associated with the Home Rule Movement?",
+o:["एनी बेसेंट / Annie Besant","सरोजिनी नायडू / Sarojini Naidu","कस्तूरबा गांधी / Kasturba Gandhi","मीराबाई / Mirabai"],
+a:0
+},
+
+{
+q:"असहयोग आंदोलन किस वर्ष शुरू हुआ?",
+e:"In which year was the Non-Cooperation Movement launched?",
+o:["1915","1920","1930","1942"],
+a:1
+},
+
+{
+q:"चंपारण सत्याग्रह किससे संबंधित था?",
+e:"Champaran Satyagraha was related to?",
+o:["नील की खेती / Indigo cultivation","नमक / Salt","कपास / Cotton","चाय / Tea"],
+a:0
+},
+
+{
+q:"भारत के लौह पुरुष किसे कहा जाता है?",
+e:"Who is known as the Iron Man of India?",
+o:["सरदार पटेल / Sardar Patel","जवाहरलाल नेहरू / Jawaharlal Nehru","सुभाष चंद्र बोस / Subhas Chandra Bose","बाल गंगाधर तिलक / Bal Gangadhar Tilak"],
+a:0
+},
+
+{
+q:"भारत का मिसाइल मैन किसे कहा जाता है?",
+e:"Who is known as the Missile Man of India?",
+o:["विक्रम साराभाई / Vikram Sarabhai","ए. पी. जे. अब्दुल कलाम / A. P. J. Abdul Kalam","होमी भाभा / Homi Bhabha","सतीश धवन / Satish Dhawan"],
+a:1
+},
+
+{
+q:"भारत में हरित क्रांति के जनक किसे कहा जाता है?",
+e:"Who is known as the Father of the Green Revolution in India?",
+o:["एम. एस. स्वामीनाथन / M. S. Swaminathan","वर्गीज कुरियन / Verghese Kurien","नॉर्मन बोरलॉग / Norman Borlaug","होमी भाभा / Homi Bhabha"],
+a:0
+},
+
+{
+q:"भारत में श्वेत क्रांति के जनक किसे कहा जाता है?",
+e:"Who is known as the Father of the White Revolution in India?",
+o:["एम. एस. स्वामीनाथन / M. S. Swaminathan","वर्गीज कुरियन / Verghese Kurien","नॉर्मन बोरलॉग / Norman Borlaug","सी. सुब्रमण्यम / C. Subramaniam"],
+a:1
+},
+
+{
+q:"ऑपरेशन फ्लड किससे संबंधित था?",
+e:"Operation Flood was related to?",
+o:["दूध उत्पादन / Milk Production","गेहूं उत्पादन / Wheat Production","मछली उत्पादन / Fish Production","तेल उत्पादन / Oil Production"],
+a:0
+},
+
+{
+q:"भारतीय अंतरिक्ष अनुसंधान संगठन का संक्षिप्त नाम क्या है?",
+e:"What is the abbreviation of the Indian Space Research Organisation?",
+o:["ISRO","DRDO","NASA","BARC"],
+a:0
+},
+  {
+q:"ISRO का मुख्यालय कहाँ है?",
+e:"Where is the headquarters of ISRO?",
+o:["मुंबई / Mumbai","बेंगलुरु / Bengaluru","चेन्नई / Chennai","हैदराबाद / Hyderabad"],
+a:1
+},
+
+{
+q:"भारत का पहला उपग्रह कौन सा था?",
+e:"What was India's first satellite?",
+o:["आर्यभट्ट / Aryabhata","रोहिणी / Rohini","भास्कर / Bhaskara","इनसैट / INSAT"],
+a:0
+},
+
+{
+q:"DRDO का पूरा नाम क्या है?",
+e:"What is the full form of DRDO?",
+o:["Defence Research and Development Organisation","Department of Research and Defence Organisation","Defence Road Development Office","Digital Research and Development Organisation"],
+a:0
+},
+
+{
+q:"DNA का पूरा नाम क्या है?",
+e:"What is the full form of DNA?",
+o:["Deoxyribonucleic Acid","Dinucleic Acid","Deoxyribose Nuclear Acid","Dynamic Nucleic Acid"],
+a:0
+},
+
+{
+q:"RNA का पूरा नाम क्या है?",
+e:"What is the full form of RNA?",
+o:["Ribonucleic Acid","Ribose Nuclear Acid","Rapid Nucleic Acid","Ribosomal Nuclear Atom"],
+a:0
+},
+
+{
+q:"कोशिका का नियंत्रण केंद्र किसे कहा जाता है?",
+e:"What is called the control center of a cell?",
+o:["नाभिक / Nucleus","माइटोकॉन्ड्रिया / Mitochondria","राइबोसोम / Ribosome","कोशिका झिल्ली / Cell Membrane"],
+a:0
+},
+
+{
+q:"कोशिका का पावरहाउस किसे कहा जाता है?",
+e:"What is called the powerhouse of the cell?",
+o:["नाभिक / Nucleus","माइटोकॉन्ड्रिया / Mitochondria","गोल्जी बॉडी / Golgi Body","राइबोसोम / Ribosome"],
+a:1
+},
+
+{
+q:"पौधों में प्रकाश संश्लेषण किस अंगक में होता है?",
+e:"Photosynthesis takes place in which organelle?",
+o:["माइटोकॉन्ड्रिया / Mitochondria","क्लोरोप्लास्ट / Chloroplast","नाभिक / Nucleus","राइबोसोम / Ribosome"],
+a:1
+},
+
+{
+q:"प्रकाश संश्लेषण के लिए किस गैस की आवश्यकता होती है?",
+e:"Which gas is required for photosynthesis?",
+o:["ऑक्सीजन / Oxygen","नाइट्रोजन / Nitrogen","कार्बन डाइऑक्साइड / Carbon Dioxide","हाइड्रोजन / Hydrogen"],
+a:2
+},
+
+{
+q:"मानव शरीर में सामान्यतः कितनी हड्डियां होती हैं?",
+e:"How many bones are there in an adult human body?",
+o:["196","206","216","226"],
+a:1
+},
+  {
+q:"मानव शरीर का सामान्य तापमान कितना माना जाता है?",
+e:"What is generally considered the normal human body temperature?",
+o:["35°C","37°C","39°C","41°C"],
+a:1
+},
+
+{
+q:"इंसुलिन किस अंग द्वारा बनाया जाता है?",
+e:"Which organ produces insulin?",
+o:["यकृत / Liver","अग्न्याशय / Pancreas","हृदय / Heart","गुर्दा / Kidney"],
+a:1
+},
+
+{
+q:"मधुमेह किस हार्मोन की कमी से संबंधित है?",
+e:"Diabetes is related to deficiency of which hormone?",
+o:["थायरॉक्सिन / Thyroxine","इंसुलिन / Insulin","एड्रेनालिन / Adrenaline","एस्ट्रोजन / Estrogen"],
+a:1
+},
+
+{
+q:"रक्तचाप मापने के यंत्र को क्या कहते हैं?",
+e:"What is the instrument used to measure blood pressure?",
+o:["थर्मामीटर / Thermometer","बैरोमीटर / Barometer","स्फिग्मोमैनोमीटर / Sphygmomanometer","हाइग्रोमीटर / Hygrometer"],
+a:2
+},
+
+{
+q:"तापमान मापने के लिए किस यंत्र का उपयोग किया जाता है?",
+e:"Which instrument is used to measure temperature?",
+o:["थर्मामीटर / Thermometer","बैरोमीटर / Barometer","अमीटर / Ammeter","वोल्टमीटर / Voltmeter"],
+a:0
+},
+
+{
+q:"वायुदाब मापने का यंत्र कौन सा है?",
+e:"Which instrument measures atmospheric pressure?",
+o:["बैरोमीटर / Barometer","थर्मामीटर / Thermometer","हाइग्रोमीटर / Hygrometer","लैक्टोमीटर / Lactometer"],
+a:0
+},
+
+{
+q:"वायु में सर्वाधिक मात्रा में कौन सी गैस होती है?",
+e:"Which gas is most abundant in the atmosphere?",
+o:["ऑक्सीजन / Oxygen","नाइट्रोजन / Nitrogen","कार्बन डाइऑक्साइड / Carbon Dioxide","हाइड्रोजन / Hydrogen"],
+a:1
+},
+
+{
+q:"ओजोन का रासायनिक सूत्र क्या है?",
+e:"What is the chemical formula of ozone?",
+o:["O₂","O₃","CO₂","H₂O"],
+a:1
+},
+
+{
+q:"अम्ल का pH सामान्यतः कितना होता है?",
+e:"What is the pH of an acid generally?",
+o:["7 से अधिक / More than 7","7 से कम / Less than 7","ठीक 7 / Exactly 7","14 से अधिक / More than 14"],
+a:1
+},
+
+{
+q:"शुद्ध जल का pH कितना होता है?",
+e:"What is the pH of pure water?",
+o:["5","6","7","8"],
+a:2
+},
+  {
+q:"ध्वनि की चाल किस माध्यम में सबसे अधिक होती है?",
+e:"In which medium does sound travel fastest?",
+o:["वायु / Air","जल / Water","ठोस / Solids","निर्वात / Vacuum"],
+a:2
+},
+
+{
+q:"ध्वनि निर्वात में कैसी चलती है?",
+e:"How does sound travel in a vacuum?",
+o:["बहुत तेज / Very fast","धीमी / Slowly","नहीं चलती / Does not travel","प्रकाश की तरह / Like light"],
+a:2
+},
+
+{
+q:"विद्युत का अच्छा चालक कौन सा है?",
+e:"Which is a good conductor of electricity?",
+o:["रबर / Rubber","लकड़ी / Wood","तांबा / Copper","प्लास्टिक / Plastic"],
+a:2
+},
+
+{
+q:"प्रकाश के परावर्तन का नियम किससे संबंधित है?",
+e:"The law of reflection is related to?",
+o:["प्रकाश / Light","ध्वनि / Sound","ऊष्मा / Heat","विद्युत / Electricity"],
+a:0
+},
+
+{
+q:"निकट दृष्टिदोष को किस लेंस से ठीक किया जाता है?",
+e:"Which lens corrects myopia?",
+o:["उत्तल / Convex","अवतल / Concave","द्विफोकसी / Bifocal","बेलनाकार / Cylindrical"],
+a:1
+},
+
+{
+q:"दूर दृष्टिदोष को किस लेंस से ठीक किया जाता है?",
+e:"Which lens corrects hypermetropia?",
+o:["अवतल / Concave","उत्तल / Convex","समतल / Plane","बेलनाकार / Cylindrical"],
+a:1
+},
+
+{
+q:"लेंस की शक्ति की SI इकाई क्या है?",
+e:"What is the SI unit of lens power?",
+o:["मीटर / Meter","डायोप्टर / Dioptre","न्यूटन / Newton","जूल / Joule"],
+a:1
+},
+
+{
+q:"हरा पौधा किस प्रकार का पोषण करता है?",
+e:"What type of nutrition do green plants have?",
+o:["परपोषी / Heterotrophic","स्वपोषी / Autotrophic","मृतजीवी / Saprophytic","परजीवी / Parasitic"],
+a:1
+},
+
+{
+q:"विश्व का सबसे बड़ा गर्म मरुस्थल कौन सा है?",
+e:"Which is the largest hot desert in the world?",
+o:["गोबी / Gobi","सहारा / Sahara","थार / Thar","कालाहारी / Kalahari"],
+a:1
+},
+
+{
+q:"विश्व की सबसे लंबी नदी के रूप में सामान्यतः किसे जाना जाता है?",
+e:"Which river is commonly known as the longest river in the world?",
+o:["अमेजन / Amazon","नील / Nile","यांग्त्सी / Yangtze","मिसीसिपी / Mississippi"],
+a:1
+},
+  {
+q:"जापान की राजधानी क्या है?",
+e:"What is the capital of Japan?",
+o:["बीजिंग / Beijing","टोक्यो / Tokyo","सियोल / Seoul","बैंकॉक / Bangkok"],
+a:1
+},
+
+{
+q:"चीन की राजधानी क्या है?",
+e:"What is the capital of China?",
+o:["शंघाई / Shanghai","बीजिंग / Beijing","हांगकांग / Hong Kong","नानजिंग / Nanjing"],
+a:1
+},
+
+{
+q:"रूस की राजधानी क्या है?",
+e:"What is the capital of Russia?",
+o:["मॉस्को / Moscow","कीव / Kyiv","मिन्स्क / Minsk","वारसॉ / Warsaw"],
+a:0
+},
+
+{
+q:"फ्रांस की राजधानी क्या है?",
+e:"What is the capital of France?",
+o:["रोम / Rome","पेरिस / Paris","बर्लिन / Berlin","मैड्रिड / Madrid"],
+a:1
+},
+
+{
+q:"इटली की राजधानी क्या है?",
+e:"What is the capital of Italy?",
+o:["पेरिस / Paris","रोम / Rome","वियना / Vienna","एथेंस / Athens"],
+a:1
+},
+
+{
+q:"ऑस्ट्रेलिया की राजधानी क्या है?",
+e:"What is the capital of Australia?",
+o:["सिडनी / Sydney","मेलबर्न / Melbourne","कैनबरा / Canberra","पर्थ / Perth"],
+a:2
+},
+
+{
+q:"नेपाल की राजधानी क्या है?",
+e:"What is the capital of Nepal?",
+o:["काठमांडू / Kathmandu","पोखरा / Pokhara","ललितपुर / Lalitpur","भक्तपुर / Bhaktapur"],
+a:0
+},
+
+{
+q:"भूटान की राजधानी क्या है?",
+e:"What is the capital of Bhutan?",
+o:["थिम्फू / Thimphu","पारो / Paro","ढाका / Dhaka","काठमांडू / Kathmandu"],
+a:0
+},
+
+{
+q:"बांग्लादेश की राजधानी क्या है?",
+e:"What is the capital of Bangladesh?",
+o:["ढाका / Dhaka","चटगांव / Chattogram","सिलहट / Sylhet","राजशाही / Rajshahi"],
+a:0
+},
+
+{
+q:"श्रीलंका की प्रशासनिक राजधानी क्या है?",
+e:"What is the administrative capital of Sri Lanka?",
+o:["कोलंबो / Colombo","श्री जयवर्धनेपुरा कोट्टे / Sri Jayawardenepura Kotte","कैंडी / Kandy","गाले / Galle"],
+a:1
+},
+  {
+q:"संयुक्त राष्ट्र संघ की स्थापना कब हुई?",
+e:"When was the United Nations established?",
+o:["1940","1945","1950","1955"],
+a:1
+},
+
+{
+q:"संयुक्त राष्ट्र संघ का मुख्यालय कहाँ है?",
+e:"Where is the headquarters of the United Nations?",
+o:["लंदन / London","न्यूयॉर्क / New York","पेरिस / Paris","जिनेवा / Geneva"],
+a:1
+},
+
+{
+q:"WHO का मुख्यालय कहाँ है?",
+e:"Where is the headquarters of WHO?",
+o:["पेरिस / Paris","जिनेवा / Geneva","न्यूयॉर्क / New York","रोम / Rome"],
+a:1
+},
+
+{
+q:"विश्व स्वास्थ्य संगठन का संक्षिप्त नाम क्या है?",
+e:"What is the abbreviation of World Health Organization?",
+o:["WHO","WTO","UNESCO","UNICEF"],
+a:0
+},
+
+{
+q:"UNESCO का मुख्यालय कहाँ है?",
+e:"Where is the headquarters of UNESCO?",
+o:["पेरिस / Paris","जिनेवा / Geneva","रोम / Rome","वियना / Vienna"],
+a:0
+},
+
+{
+q:"विश्व बैंक का मुख्यालय कहाँ है?",
+e:"Where is the headquarters of the World Bank?",
+o:["वॉशिंगटन डी.सी. / Washington D.C.","न्यूयॉर्क / New York","लंदन / London","पेरिस / Paris"],
+a:0
+},
+
+{
+q:"भारत की राष्ट्रीय नदी कौन सी है?",
+e:"Which is the National River of India?",
+o:["यमुना / Yamuna","गंगा / Ganga","गोदावरी / Godavari","नर्मदा / Narmada"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय कैलेंडर किस युग पर आधारित है?",
+e:"India's National Calendar is based on which era?",
+o:["विक्रम संवत / Vikram Samvat","शक संवत / Saka Era","हिजरी / Hijri","ग्रेगोरियन / Gregorian"],
+a:1
+},
+
+{
+q:"भारत का राष्ट्रीय खेल आधिकारिक रूप से कौन सा है?",
+e:"Which is officially the national sport of India?",
+o:["हॉकी / Hockey","क्रिकेट / Cricket","कबड्डी / Kabaddi","कोई आधिकारिक राष्ट्रीय खेल नहीं / No official national sport"],
+a:3
+},
+
+{
+q:"हॉकी में एक टीम में कितने खिलाड़ी मैदान पर होते हैं?",
+e:"How many players are on the field for one hockey team?",
+o:["9","10","11","12"],
+a:2
+},
+  {
+q:"क्रिकेट में एक टीम में कितने खिलाड़ी होते हैं?",
+e:"How many players are there in a cricket team?",
+o:["9","10","11","12"],
+a:2
+},
+
+{
+q:"फुटबॉल में एक टीम के कितने खिलाड़ी मैदान पर होते हैं?",
+e:"How many players are on the field for one football team?",
+o:["9","10","11","12"],
+a:2
+},
+
+{
+q:"कबड्डी में एक टीम के कितने खिलाड़ी मैदान पर होते हैं?",
+e:"How many players are on the court for one Kabaddi team?",
+o:["5","6","7","8"],
+a:2
+},
+
+{
+q:"शतरंज की बिसात में कितने खाने होते हैं?",
+e:"How many squares are there on a chessboard?",
+o:["32","48","64","81"],
+a:2
+},
+
+{
+q:"ओलंपिक खेलों के प्रतीक में कितने छल्ले होते हैं?",
+e:"How many rings are there in the Olympic symbol?",
+o:["4","5","6","7"],
+a:1
+},
+
+{
+q:"कंप्यूटर में डेटा की सबसे छोटी इकाई क्या है?",
+e:"What is the smallest unit of data in a computer?",
+o:["Byte","Bit","KB","MB"],
+a:1
+},
+
+{
+q:"1 Byte में कितने Bits होते हैं?",
+e:"How many bits are there in 1 Byte?",
+o:["4","8","16","32"],
+a:1
+},
+
+{
+q:"WWW का आविष्कार किसने किया?",
+e:"Who invented the World Wide Web?",
+o:["Bill Gates","Tim Berners-Lee","Steve Jobs","Charles Babbage"],
+a:1
+},
+
+{
+q:"कंप्यूटर का जनक किसे कहा जाता है?",
+e:"Who is known as the father of the computer?",
+o:["Charles Babbage","Alan Turing","Bill Gates","Tim Berners-Lee"],
+a:0
+},
+
+{
+q:"HTML का पूरा नाम क्या है?",
+e:"What is the full form of HTML?",
+o:["Hyper Text Markup Language","High Text Markup Language","Hyperlink Text Management Language","Home Tool Markup Language"],
+a:0
+},
+];
+
+/* =========================
+   SHOW QUESTIONS
+========================= */
+
+const questionBox = document.getElementById("questions");
+
+questions.forEach((item, index) => {
+
+    const card = document.createElement("div");
+    card.className = "question-card";
+
+    let optionsHTML = "";
+
+    item.o.forEach((option, optionIndex) => {
+        optionsHTML += `
+            <label>
+                <input type="radio" name="q${index}" value="${optionIndex}">
+                ${option}
+            </label>
+        `;
+    });
+
+    card.innerHTML = `
+        <h3>Q${index + 1}. ${item.q}</h3>
+        <p>${item.e}</p>
+
+        <div class="options">
+            ${optionsHTML}
+        </div>
+
+        <div class="answer-result" id="result${index}"></div>
+    `;
+
+    questionBox.appendChild(card);
+});
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+const submitButton = document.createElement("button");
+
+submitButton.textContent = "✅ Submit & Check Result";
+
+submitButton.style.display = "block";
+submitButton.style.margin = "25px auto";
+submitButton.style.padding = "12px 25px";
+submitButton.style.border = "none";
+submitButton.style.borderRadius = "8px";
+submitButton.style.background = "#2563eb";
+submitButton.style.color = "white";
+submitButton.style.fontSize = "16px";
+submitButton.style.cursor = "pointer";
+
+questionBox.after(submitButton);
+
+
+/* =========================
+   CHECK RESULT
+========================= */
+
+submitButton.addEventListener("click", function () {
+
+    let score = 0;
+
+    questions.forEach((item, index) => {
+
+        const selected = document.querySelector(
+            `input[name="q${index}"]:checked`
+        );
+
+        const result = document.getElementById(`result${index}`);
+
+        if (!selected) {
+
+            result.innerHTML = "⚠️ Answer not selected";
+            result.style.color = "orange";
+
+        } else {
+
+            const answer = Number(selected.value);
+
+            if (answer === item.a) {
+
+                score++;
+
+                result.innerHTML = "✅ Correct";
+
+                result.style.color = "green";
+
+            } else {
+
+                result.innerHTML =
+                    `❌ Wrong — Correct Answer: ${item.o[item.a]}`;
+
+                result.style.color = "red";
+            }
+        }
+    });
+
+
+    const total = questions.length;
+
+    alert(
+        `🎉 Test Completed!\n\nYour Score: ${score} / ${total}`
+    );
+
+});
+  </script>
+
+</body>
+</html>>

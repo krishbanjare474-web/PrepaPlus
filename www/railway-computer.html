@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>💻 Railway Computer Practice - PrepaPlus</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>💻 Railway Computer Practice</h1>
+<p>200 Computer MCQs</p>
+</header>
+
+
+<section id="quiz">
+
+</section>
+
+
+<button onclick="checkResult()">Submit Test</button>
+
+
+<div id="result"></div>
+
+
+<script>
+
+let questions = [
+{
+q:"कंप्यूटर का जनक किसे कहा जाता है?",
+o:["चार्ल्स बैबेज","बिल गेट्स","स्टीव जॉब्स","टिम बर्नर्स ली"],
+a:"चार्ल्स बैबेज"
+},
+
+{
+q:"कंप्यूटर का मस्तिष्क किसे कहा जाता है?",
+o:["CPU","Monitor","Keyboard","Mouse"],
+a:"CPU"
+},
+
+{
+q:"CPU का पूरा नाम क्या है?",
+o:["Central Processing Unit","Central Program Unit","Computer Processing Unit","Control Processing Unit"],
+a:"Central Processing Unit"
+},
+
+{
+q:"कंप्यूटर में डेटा को स्थायी रूप से संग्रहित करने के लिए किसका उपयोग किया जाता है?",
+o:["Hard Disk","RAM","Cache","Register"],
+a:"Hard Disk"
+},
+
+{
+q:"RAM किस प्रकार की मेमोरी है?",
+o:["अस्थायी मेमोरी","स्थायी मेमोरी","बाहरी मेमोरी","ऑप्टिकल मेमोरी"],
+a:"अस्थायी मेमोरी"
+},
+
+{
+q:"कंप्यूटर की पहली पीढ़ी में किसका उपयोग किया गया था?",
+o:["Vacuum Tube","Transistor","IC","Microprocessor"],
+a:"Vacuum Tube"
+},
+
+{
+q:"WWW का पूरा नाम क्या है?",
+o:["World Wide Web","World Web Window","Wide World Web","Web World Wide"],
+a:"World Wide Web"
+},
+
+{
+q:"कीबोर्ड किस प्रकार का उपकरण है?",
+o:["Input Device","Output Device","Storage Device","Processing Device"],
+a:"Input Device"
+},
+
+{
+q:"मॉनिटर किस प्रकार का उपकरण है?",
+o:["Output Device","Input Device","Storage Device","Processing Device"],
+a:"Output Device"
+},
+
+{
+q:"माउस का आविष्कार किसने किया था?",
+o:["डगलस एंजेलबर्ट","चार्ल्स बैबेज","बिल गेट्स","एलन ट्यूरिंग"],
+a:"डगलस एंजेलबर्ट"
+},
+
+{
+q:"1 Byte में कितने Bits होते हैं?",
+o:["8 Bits","4 Bits","16 Bits","32 Bits"],
+a:"8 Bits"
+},
+
+{
+q:"Operating System का उदाहरण कौन सा है?",
+o:["Windows","MS Word","Google","CPU"],
+a:"Windows"
+},
+
+{
+q:"MS Word किसका उदाहरण है?",
+o:["Application Software","Operating System","Hardware","Browser"],
+a:"Application Software"
+},
+
+{
+q:"कंप्यूटर वायरस क्या होता है?",
+o:["हानिकारक प्रोग्राम","हार्डवेयर","मेमोरी","इनपुट डिवाइस"],
+a:"हानिकारक प्रोग्राम"
+},
+
+{
+q:"Internet का उपयोग किसके लिए किया जाता है?",
+o:["सूचना आदान-प्रदान","केवल गेम खेलने","केवल टाइपिंग","केवल प्रिंटिंग"],
+a:"सूचना आदान-प्रदान"
+},
+
+{
+q:"USB का पूरा नाम क्या है?",
+o:["Universal Serial Bus","United System Bus","Universal System Board","Unique Serial Board"],
+a:"Universal Serial Bus"
+},
+
+{
+q:"कंप्यूटर में गणना करने का कार्य कौन करता है?",
+o:["ALU","Monitor","Keyboard","Printer"],
+a:"ALU"
+},
+
+{
+q:"ALU का पूरा नाम क्या है?",
+o:["Arithmetic Logic Unit","Automatic Logic Unit","Advanced Logic Unit","Arithmetic Link Unit"],
+a:"Arithmetic Logic Unit"
+},
+
+{
+q:"ई-मेल का आविष्कार किसने किया था?",
+o:["रे टॉमलिनसन","बिल गेट्स","स्टीव जॉब्स","मार्क जुकरबर्ग"],
+a:"रे टॉमलिनसन"
+},
+
+{
+q:"Printer किस प्रकार का उपकरण है?",
+o:["Output Device","Input Device","Memory Device","Processing Device"],
+a:"Output Device"
+},
+  {
+q:"कंप्यूटर में फाइल को सुरक्षित रखने के लिए किसका उपयोग किया जाता है?",
+o:["Folder","CPU","RAM","Monitor"],
+a:"Folder"
+},
+
+{
+q:"कंप्यूटर की स्थायी मेमोरी कौन सी है?",
+o:["ROM","RAM","Cache","Register"],
+a:"ROM"
+},
+
+{
+q:"ROM का पूरा नाम क्या है?",
+o:["Read Only Memory","Random Only Memory","Read Open Memory","Run Only Memory"],
+a:"Read Only Memory"
+},
+
+{
+q:"कंप्यूटर की गति किसमें मापी जाती है?",
+o:["Hertz","Meter","Liter","Byte"],
+a:"Hertz"
+},
+
+{
+q:"कंप्यूटर में सूचना की सबसे छोटी इकाई क्या है?",
+o:["Bit","Byte","KB","MB"],
+a:"Bit"
+},
+
+{
+q:"1 KB में कितने Bytes होते हैं?",
+o:["1024 Bytes","1000 Bytes","512 Bytes","2048 Bytes"],
+a:"1024 Bytes"
+},
+
+{
+q:"कंप्यूटर में Ctrl + C का उपयोग किसके लिए होता है?",
+o:["Copy","Cut","Close","Create"],
+a:"Copy"
+},
+
+{
+q:"Ctrl + V का उपयोग किसके लिए किया जाता है?",
+o:["Paste","Copy","Save","Print"],
+a:"Paste"
+},
+
+{
+q:"Ctrl + X का उपयोग किसके लिए होता है?",
+o:["Cut","Copy","Exit","Undo"],
+a:"Cut"
+},
+
+{
+q:"Ctrl + Z का उपयोग किसके लिए किया जाता है?",
+o:["Undo","Redo","Save","Select"],
+a:"Undo"
+},
+
+{
+q:"कंप्यूटर में डेटा को प्रोसेस कौन करता है?",
+o:["CPU","Mouse","Keyboard","Printer"],
+a:"CPU"
+},
+
+{
+q:"Linux किस प्रकार का सॉफ्टवेयर है?",
+o:["Operating System","Application Software","Antivirus","Browser"],
+a:"Operating System"
+},
+
+{
+q:"Google Chrome क्या है?",
+o:["Web Browser","Operating System","Antivirus","Hardware"],
+a:"Web Browser"
+},
+
+{
+q:"कंप्यूटर की स्क्रीन को क्या कहते हैं?",
+o:["Monitor","CPU","Scanner","Printer"],
+a:"Monitor"
+},
+
+{
+q:"Scanner किस प्रकार का उपकरण है?",
+o:["Input Device","Output Device","Storage Device","Processing Device"],
+a:"Input Device"
+},
+
+{
+q:"कंप्यूटर में वायरस से सुरक्षा के लिए किसका उपयोग किया जाता है?",
+o:["Antivirus","Compiler","Browser","Driver"],
+a:"Antivirus"
+},
+
+{
+q:"Bluetooth किस प्रकार की तकनीक है?",
+o:["Wireless Technology","Printing Technology","Storage Technology","CPU Technology"],
+a:"Wireless Technology"
+},
+
+{
+q:"कंप्यूटर नेटवर्क में LAN का पूरा नाम क्या है?",
+o:["Local Area Network","Large Area Network","Long Area Network","Light Area Network"],
+a:"Local Area Network"
+},
+
+{
+q:"WAN का पूरा नाम क्या है?",
+o:["Wide Area Network","Wireless Area Network","Web Area Network","World Area Network"],
+a:"Wide Area Network"
+},
+
+{
+q:"कंप्यूटर में इंटरनेट चलाने के लिए किसकी आवश्यकता होती है?",
+o:["Network Connection","Printer","Scanner","Speaker"],
+a:"Network Connection"
+},
+  {
+q:"कंप्यूटर में डेटा की गणना और तुलना करने का कार्य कौन करता है?",
+o:["ALU","RAM","ROM","Monitor"],
+a:"ALU"
+},
+
+{
+q:"कंप्यूटर में निर्देशों को नियंत्रित करने का कार्य कौन करता है?",
+o:["Control Unit","ALU","Hard Disk","Keyboard"],
+a:"Control Unit"
+},
+
+{
+q:"कंप्यूटर का पूरा नाम क्या है?",
+o:["Common Operating Machine Purposely Used for Technological and Educational Research","Central Operating Machine","Common Output Machine","Computer Operating Method"],
+a:"Common Operating Machine Purposely Used for Technological and Educational Research"
+},
+
+{
+q:"कंप्यूटर में इस्तेमाल होने वाली भाषा को क्या कहते हैं?",
+o:["Programming Language","Natural Language","Local Language","Human Language"],
+a:"Programming Language"
+},
+
+{
+q:"Java किस प्रकार की भाषा है?",
+o:["Programming Language","Operating System","Browser","Hardware"],
+a:"Programming Language"
+},
+
+{
+q:"HTML का पूरा नाम क्या है?",
+o:["Hyper Text Markup Language","High Text Machine Language","Hyper Transfer Mark Language","Home Tool Markup Language"],
+a:"Hyper Text Markup Language"
+},
+
+{
+q:"कंप्यूटर में स्क्रीन पर दिखाई देने वाली जानकारी को क्या कहते हैं?",
+o:["Output","Input","Storage","Process"],
+a:"Output"
+},
+
+{
+q:"Printer में किसका उपयोग किया जाता है?",
+o:["Ink","CPU","RAM","ROM"],
+a:"Ink"
+},
+
+{
+q:"कंप्यूटर में Delete की गई फाइल कहाँ जाती है?",
+o:["Recycle Bin","Control Panel","Taskbar","Desktop"],
+a:"Recycle Bin"
+},
+
+{
+q:"Desktop पर छोटे चित्रों को क्या कहा जाता है?",
+o:["Icons","Files","Folders","Programs"],
+a:"Icons"
+},
+
+{
+q:"कंप्यूटर को बंद करने की प्रक्रिया क्या कहलाती है?",
+o:["Shutdown","Booting","Processing","Loading"],
+a:"Shutdown"
+},
+
+{
+q:"कंप्यूटर चालू होने की प्रक्रिया को क्या कहते हैं?",
+o:["Booting","Shutdown","Formatting","Scanning"],
+a:"Booting"
+},
+
+{
+q:"कंप्यूटर में कॉपी की गई वस्तु कहाँ रहती है?",
+o:["Clipboard","Recycle Bin","Desktop","Folder"],
+a:"Clipboard"
+},
+
+{
+q:"MS Excel किसके लिए प्रयोग किया जाता है?",
+o:["Spreadsheet बनाने के लिए","Video चलाने के लिए","Internet चलाने के लिए","Photo Edit करने के लिए"],
+a:"Spreadsheet बनाने के लिए"
+},
+
+{
+q:"PowerPoint का उपयोग किसके लिए किया जाता है?",
+o:["Presentation बनाने के लिए","Typing करने के लिए","Coding करने के लिए","Scanning करने के लिए"],
+a:"Presentation बनाने के लिए"
+},
+
+{
+q:"कंप्यूटर में गणना की गति बढ़ाने वाली मेमोरी कौन सी है?",
+o:["Cache Memory","Hard Disk","Pen Drive","DVD"],
+a:"Cache Memory"
+},
+
+{
+q:"Pen Drive किस प्रकार की डिवाइस है?",
+o:["Storage Device","Input Device","Output Device","Processing Device"],
+a:"Storage Device"
+},
+
+{
+q:"Wi-Fi किससे संबंधित है?",
+o:["Wireless Internet","Printer","Scanner","Memory"],
+a:"Wireless Internet"
+},
+
+{
+q:"कंप्यूटर में Password का उपयोग क्यों किया जाता है?",
+o:["Security के लिए","Speed बढ़ाने के लिए","Storage के लिए","Printing के लिए"],
+a:"Security के लिए"
+},
+
+{
+q:"कंप्यूटर की भाषा में Binary System में कितने अंक होते हैं?",
+o:["2","8","10","16"],
+a:"2"
+},
+  {
+q:"कंप्यूटर में डेटा को व्यवस्थित करने के लिए किसका उपयोग किया जाता है?",
+o:["Database","Monitor","Keyboard","Printer"],
+a:"Database"
+},
+
+{
+q:"DBMS का पूरा नाम क्या है?",
+o:["Database Management System","Data Backup Management System","Digital Base Memory System","Database Machine System"],
+a:"Database Management System"
+},
+
+{
+q:"कंप्यूटर में फाइल का नाम बदलने के लिए किस विकल्प का उपयोग किया जाता है?",
+o:["Rename","Delete","Copy","Paste"],
+a:"Rename"
+},
+
+{
+q:"कंप्यूटर में नई फाइल बनाने के लिए क्या उपयोग किया जाता है?",
+o:["New Option","Delete Option","Print Option","Close Option"],
+a:"New Option"
+},
+
+{
+q:"कंप्यूटर में किसी प्रोग्राम को चलाने के लिए क्या किया जाता है?",
+o:["Execute","Delete","Format","Copy"],
+a:"Execute"
+},
+
+{
+q:"कंप्यूटर में ऑपरेटिंग सिस्टम और हार्डवेयर के बीच संपर्क कौन बनाता है?",
+o:["System Software","Application Software","Game Software","Utility Software"],
+a:"System Software"
+},
+
+{
+q:"कंप्यूटर में MS Office किसका उदाहरण है?",
+o:["Application Software","Hardware","Operating System","Firmware"],
+a:"Application Software"
+},
+
+{
+q:"कंप्यूटर में वायरस फैलने का मुख्य कारण क्या हो सकता है?",
+o:["Infected Files","Monitor","Keyboard","CPU Fan"],
+a:"Infected Files"
+},
+
+{
+q:"कंप्यूटर की अस्थायी मेमोरी कौन सी है?",
+o:["RAM","ROM","Hard Disk","DVD"],
+a:"RAM"
+},
+
+{
+q:"कंप्यूटर में स्थायी रूप से डेटा रखने के लिए कौन सा उपकरण प्रयोग होता है?",
+o:["Hard Disk","RAM","Cache","Register"],
+a:"Hard Disk"
+},
+
+{
+q:"कंप्यूटर में फोल्डर बनाने का उद्देश्य क्या है?",
+o:["Files को व्यवस्थित रखना","Speed बढ़ाना","Virus हटाना","Internet चलाना"],
+a:"Files को व्यवस्थित रखना"
+},
+
+{
+q:"कंप्यूटर में Backup का अर्थ क्या है?",
+o:["डेटा की प्रतिलिपि बनाना","डेटा हटाना","डेटा बदलना","कंप्यूटर बंद करना"],
+a:"डेटा की प्रतिलिपि बनाना"
+},
+
+{
+q:"PDF का पूरा नाम क्या है?",
+o:["Portable Document Format","Personal Data File","Print Document Format","Public Document File"],
+a:"Portable Document Format"
+},
+
+{
+q:"कंप्यूटर में फाइल को हटाने के लिए कौन सी Key प्रयोग होती है?",
+o:["Delete Key","Shift Key","Ctrl Key","Alt Key"],
+a:"Delete Key"
+},
+
+{
+q:"कंप्यूटर में Enter Key का उपयोग किसके लिए किया जाता है?",
+o:["Command स्वीकार करने के लिए","कंप्यूटर बंद करने के लिए","Copy करने के लिए","Delete करने के लिए"],
+a:"Command स्वीकार करने के लिए"
+},
+
+{
+q:"कंप्यूटर में सबसे तेज मेमोरी कौन सी होती है?",
+o:["Register Memory","Hard Disk","RAM","ROM"],
+a:"Register Memory"
+},
+
+{
+q:"Antivirus का काम क्या है?",
+o:["Virus से सुरक्षा करना","Internet बंद करना","Data Delete करना","File बनाना"],
+a:"Virus से सुरक्षा करना"
+},
+
+{
+q:"कंप्यूटर में फाइलों को संपीड़ित करने के लिए क्या उपयोग किया जाता है?",
+o:["Compression","Formatting","Scanning","Printing"],
+a:"Compression"
+},
+
+{
+q:"Bluetooth का उपयोग किसके लिए किया जाता है?",
+o:["Data Transfer","Printing Only","Typing","Calculation"],
+a:"Data Transfer"
+},
+
+{
+q:"कंप्यूटर नेटवर्क में IP का पूरा नाम क्या है?",
+o:["Internet Protocol","Internal Program","Internet Process","Input Protocol"],
+a:"Internet Protocol"
+},
+  {
+q:"कंप्यूटर में Taskbar कहाँ दिखाई देता है?",
+o:["Desktop पर","CPU के अंदर","Keyboard पर","Monitor के पीछे"],
+a:"Desktop पर"
+},
+
+{
+q:"कंप्यूटर में स्क्रीन की पृष्ठभूमि को क्या कहते हैं?",
+o:["Wallpaper","Icon","Folder","Taskbar"],
+a:"Wallpaper"
+},
+
+{
+q:"कंप्यूटर में समय और तारीख कहाँ दिखाई देती है?",
+o:["Taskbar","Recycle Bin","Control Panel","Folder"],
+a:"Taskbar"
+},
+
+{
+q:"कंप्यूटर में Control Panel का उपयोग किसके लिए होता है?",
+o:["Settings बदलने के लिए","Typing करने के लिए","Video देखने के लिए","Internet बंद करने के लिए"],
+a:"Settings बदलने के लिए"
+},
+
+{
+q:"कंप्यूटर में Font बदलने का कार्य किससे किया जाता है?",
+o:["Formatting","Scanning","Printing","Saving"],
+a:"Formatting"
+},
+
+{
+q:"कंप्यूटर में Save करने की Shortcut Key क्या है?",
+o:["Ctrl + S","Ctrl + C","Ctrl + X","Ctrl + V"],
+a:"Ctrl + S"
+},
+
+{
+q:"कंप्यूटर में Print करने की Shortcut Key क्या है?",
+o:["Ctrl + P","Ctrl + S","Ctrl + Z","Ctrl + A"],
+a:"Ctrl + P"
+},
+
+{
+q:"कंप्यूटर में सभी वस्तुओं को Select करने की Shortcut Key क्या है?",
+o:["Ctrl + A","Ctrl + C","Ctrl + X","Ctrl + V"],
+a:"Ctrl + A"
+},
+
+{
+q:"कंप्यूटर में Undo की गई क्रिया को वापस लाने के लिए क्या उपयोग होता है?",
+o:["Redo","Copy","Paste","Delete"],
+a:"Redo"
+},
+
+{
+q:"कंप्यूटर में खाली जगह को क्या कहते हैं?",
+o:["Space","Tab","Enter","Shift"],
+a:"Space"
+},
+
+{
+q:"Keyboard में कितनी Function Keys होती हैं?",
+o:["12","10","8","14"],
+a:"12"
+},
+
+{
+q:"कंप्यूटर में F1 Key का उपयोग किसके लिए होता है?",
+o:["Help के लिए","Save के लिए","Print के लिए","Copy के लिए"],
+a:"Help के लिए"
+},
+
+{
+q:"कंप्यूटर में Mouse की सामान्यतः कितनी Buttons होती हैं?",
+o:["2","1","3","4"],
+a:"2"
+},
+
+{
+q:"कंप्यूटर में Scroll Wheel का उपयोग किसके लिए होता है?",
+o:["ऊपर-नीचे जाने के लिए","Print करने के लिए","Delete करने के लिए","Save करने के लिए"],
+a:"ऊपर-नीचे जाने के लिए"
+},
+
+{
+q:"कंप्यूटर में Folder का दूसरा नाम क्या है?",
+o:["Directory","Program","Window","Icon"],
+a:"Directory"
+},
+
+{
+q:"Windows किस कंपनी द्वारा बनाया गया है?",
+o:["Microsoft","Google","Apple","IBM"],
+a:"Microsoft"
+},
+
+{
+q:"Android किस प्रकार का Operating System है?",
+o:["Mobile Operating System","Printer System","Database System","Hardware"],
+a:"Mobile Operating System"
+},
+
+{
+q:"कंप्यूटर में Cache Memory कहाँ स्थित होती है?",
+o:["CPU के पास","Keyboard में","Monitor में","Mouse में"],
+a:"CPU के पास"
+},
+
+{
+q:"कंप्यूटर में Cloud Storage का उदाहरण कौन सा है?",
+o:["Google Drive","CPU","RAM","Keyboard"],
+a:"Google Drive"
+},
+
+{
+q:"कंप्यूटर में Spam क्या होता है?",
+o:["अनचाहे संदेश","Hardware","Operating System","Memory"],
+a:"अनचाहे संदेश"
+},
+  {
+q:"कंप्यूटर में CPU की गति किसमें मापी जाती है?",
+o:["GHz","Meter","Liter","Byte"],
+a:"GHz"
+},
+
+{
+q:"कंप्यूटर में मदरबोर्ड क्या होता है?",
+o:["मुख्य सर्किट बोर्ड","मेमोरी","सॉफ्टवेयर","इनपुट डिवाइस"],
+a:"मुख्य सर्किट बोर्ड"
+},
+
+{
+q:"BIOS का पूरा नाम क्या है?",
+o:["Basic Input Output System","Binary Input Operating System","Basic Internet Operating System","Backup Input Output System"],
+a:"Basic Input Output System"
+},
+
+{
+q:"कंप्यूटर में POST का पूरा नाम क्या है?",
+o:["Power On Self Test","Program Output System Test","Power Operating System Tool","Process On System Test"],
+a:"Power On Self Test"
+},
+
+{
+q:"कंप्यूटर में USB पोर्ट का उपयोग किसके लिए होता है?",
+o:["डिवाइस जोड़ने के लिए","कंप्यूटर बंद करने के लिए","स्क्रीन साफ करने के लिए","गणना करने के लिए"],
+a:"डिवाइस जोड़ने के लिए"
+},
+
+{
+q:"कंप्यूटर में Scanner का उपयोग किसके लिए किया जाता है?",
+o:["दस्तावेज को डिजिटल बनाने के लिए","प्रिंट करने के लिए","आवाज रिकॉर्ड करने के लिए","वीडियो चलाने के लिए"],
+a:"दस्तावेज को डिजिटल बनाने के लिए"
+},
+
+{
+q:"कंप्यूटर में Microprocessor किस पीढ़ी से संबंधित है?",
+o:["चौथी पीढ़ी","पहली पीढ़ी","दूसरी पीढ़ी","तीसरी पीढ़ी"],
+a:"चौथी पीढ़ी"
+},
+
+{
+q:"कंप्यूटर की पांचवीं पीढ़ी किस तकनीक पर आधारित है?",
+o:["Artificial Intelligence","Vacuum Tube","Transistor","IC"],
+a:"Artificial Intelligence"
+},
+
+{
+q:"कंप्यूटर में IC का पूरा नाम क्या है?",
+o:["Integrated Circuit","Internal Circuit","Internet Circuit","Input Circuit"],
+a:"Integrated Circuit"
+},
+
+{
+q:"कंप्यूटर में Transistor का उपयोग किस पीढ़ी में हुआ?",
+o:["दूसरी पीढ़ी","पहली पीढ़ी","तीसरी पीढ़ी","चौथी पीढ़ी"],
+a:"दूसरी पीढ़ी"
+},
+
+{
+q:"कंप्यूटर में ऑपरेटिंग सिस्टम का मुख्य कार्य क्या है?",
+o:["Hardware और User के बीच संपर्क","केवल गेम चलाना","केवल टाइपिंग करना","केवल इंटरनेट चलाना"],
+a:"Hardware और User के बीच संपर्क"
+},
+
+{
+q:"MS Word में नई लाइन शुरू करने के लिए कौन सी Key प्रयोग होती है?",
+o:["Enter Key","Shift Key","Ctrl Key","Alt Key"],
+a:"Enter Key"
+},
+
+{
+q:"कंप्यूटर में RAM का उपयोग किस लिए होता है?",
+o:["अस्थायी डेटा रखने के लिए","स्थायी डेटा रखने के लिए","प्रिंट करने के लिए","स्कैन करने के लिए"],
+a:"अस्थायी डेटा रखने के लिए"
+},
+
+{
+q:"कंप्यूटर में DVD का पूरा नाम क्या है?",
+o:["Digital Versatile Disc","Digital Video Data","Direct Visual Disc","Data Virtual Disk"],
+a:"Digital Versatile Disc"
+},
+
+{
+q:"कंप्यूटर में CD का पूरा नाम क्या है?",
+o:["Compact Disc","Computer Disc","Common Disc","Control Disc"],
+a:"Compact Disc"
+},
+
+{
+q:"कंप्यूटर में Modem का उपयोग किसके लिए किया जाता है?",
+o:["Internet Connection के लिए","Printing के लिए","Scanning के लिए","Typing के लिए"],
+a:"Internet Connection के लिए"
+},
+
+{
+q:"LAN नेटवर्क का उपयोग कहाँ अधिक होता है?",
+o:["छोटे क्षेत्र में","पूरे विश्व में","केवल मोबाइल में","केवल इंटरनेट पर"],
+a:"छोटे क्षेत्र में"
+},
+
+{
+q:"Internet का जनक किसे कहा जाता है?",
+o:["Vint Cerf","Bill Gates","Charles Babbage","Steve Jobs"],
+a:"Vint Cerf"
+},
+
+{
+q:"कंप्यूटर में Browser का उपयोग किसके लिए होता है?",
+o:["Web Pages देखने के लिए","Typing करने के लिए","Printing करने के लिए","Calculation करने के लिए"],
+a:"Web Pages देखने के लिए"
+},
+
+{
+q:"कंप्यूटर में Search Engine का उदाहरण कौन सा है?",
+o:["Google","Windows","CPU","RAM"],
+a:"Google"
+},
+
+{
+q:"कंप्यूटर में .com किससे संबंधित है?",
+o:["Commercial Domain","Computer Memory","Command","Control"],
+a:"Commercial Domain"
+},
+
+{
+q:"कंप्यूटर में Email भेजने के लिए किसकी आवश्यकता होती है?",
+o:["Internet Connection","Printer","Scanner","CPU Fan"],
+a:"Internet Connection"
+},
+
+{
+q:"कंप्यूटर में Firewall का उपयोग किसके लिए किया जाता है?",
+o:["Security के लिए","Printing के लिए","Storage के लिए","Speed बढ़ाने के लिए"],
+a:"Security के लिए"
+},
+
+{
+q:"कंप्यूटर में Malware क्या होता है?",
+o:["हानिकारक Software","Hardware","Memory","Browser"],
+a:"हानिकारक Software"
+},
+
+{
+q:"कंप्यूटर में Trojan क्या है?",
+o:["एक प्रकार का Malware","Printer","Operating System","Browser"],
+a:"एक प्रकार का Malware"
+},
+
+{
+q:"कंप्यूटर में Worm क्या है?",
+o:["एक प्रकार का Virus","Hardware","Memory","Input Device"],
+a:"एक प्रकार का Virus"
+},
+
+{
+q:"कंप्यूटर में Backup क्यों लिया जाता है?",
+o:["डेटा सुरक्षित रखने के लिए","डेटा हटाने के लिए","Speed कम करने के लिए","Virus बनाने के लिए"],
+a:"डेटा सुरक्षित रखने के लिए"
+},
+
+{
+q:"कंप्यूटर में Cloud Computing का संबंध किससे है?",
+o:["Internet आधारित सेवाएं","Keyboard","Monitor","Printer"],
+a:"Internet आधारित सेवाएं"
+},
+
+{
+q:"कंप्यूटर में AI का पूरा नाम क्या है?",
+o:["Artificial Intelligence","Automatic Internet","Advanced Input","Artificial Interface"],
+a:"Artificial Intelligence"
+},
+
+{
+q:"कंप्यूटर में GUI का पूरा नाम क्या है?",
+o:["Graphical User Interface","General User Internet","Graphic Utility Input","Global User Interface"],
+a:"Graphical User Interface"
+},
+
+{
+q:"कंप्यूटर में DOS का पूरा नाम क्या है?",
+o:["Disk Operating System","Digital Operating Service","Data Operating System","Disk Output System"],
+a:"Disk Operating System"
+},
+
+{
+q:"कंप्यूटर में Unix क्या है?",
+o:["Operating System","Browser","Hardware","Antivirus"],
+a:"Operating System"
+},
+
+{
+q:"कंप्यूटर में Linux किस प्रकार का Software है?",
+o:["Open Source Operating System","Game Software","Browser","Antivirus"],
+a:"Open Source Operating System"
+},
+
+{
+q:"कंप्यूटर में Open Source Software का उदाहरण कौन सा है?",
+o:["Linux","Windows","MS Word","Photoshop"],
+a:"Linux"
+},
+
+{
+q:"कंप्यूटर में File Extension क्या बताता है?",
+o:["File का प्रकार","File का रंग","File का आकार","File का स्थान"],
+a:"File का प्रकार"
+},
+
+{
+q:"कंप्यूटर में .jpg किस प्रकार की फाइल होती है?",
+o:["Image File","Audio File","Text File","Program File"],
+a:"Image File"
+},
+
+{
+q:"कंप्यूटर में .mp3 किस प्रकार की फाइल होती है?",
+o:["Audio File","Image File","Video File","Text File"],
+a:"Audio File"
+},
+
+{
+q:"कंप्यूटर में .exe फाइल किससे संबंधित होती है?",
+o:["Executable Program","Image","Audio","Document"],
+a:"Executable Program"
+},
+
+{
+q:"कंप्यूटर में डेटा भेजने की प्रक्रिया क्या कहलाती है?",
+o:["Upload","Download","Delete","Format"],
+a:"Upload"
+},
+
+{
+q:"कंप्यूटर में डेटा प्राप्त करने की प्रक्रिया क्या कहलाती है?",
+o:["Download","Upload","Copy","Paste"],
+a:"Download"
+},
+
+{
+q:"कंप्यूटर में स्क्रीन का छोटा चित्र क्या कहलाता है?",
+o:["Icon","Folder","File","Window"],
+a:"Icon"
+},
+
+{
+q:"कंप्यूटर में Recycle Bin का उपयोग किस लिए होता है?",
+o:["Deleted Files रखने के लिए","Virus हटाने के लिए","Internet चलाने के लिए","Typing के लिए"],
+a:"Deleted Files रखने के लिए"
+},
+
+{
+q:"कंप्यूटर में Format करने का अर्थ क्या है?",
+o:["Storage को तैयार करना","Computer बंद करना","Print करना","Copy करना"],
+a:"Storage को तैयार करना"
+},
+
+{
+q:"कंप्यूटर में Password मजबूत क्यों होना चाहिए?",
+o:["Security बढ़ाने के लिए","Speed बढ़ाने के लिए","Memory बढ़ाने के लिए","Screen साफ करने के लिए"],
+a:"Security बढ़ाने के लिए"
+},
+
+{
+q:"कंप्यूटर में Network से जुड़े कंप्यूटरों को क्या कहते हैं?",
+o:["Nodes","Files","Folders","Programs"],
+a:"Nodes"
+},
+
+{
+q:"कंप्यूटर में Server क्या होता है?",
+o:["सेवा प्रदान करने वाला कंप्यूटर","Keyboard","Mouse","Printer"],
+a:"सेवा प्रदान करने वाला कंप्यूटर"
+},
+
+{
+q:"कंप्यूटर में Client क्या होता है?",
+o:["सेवा प्राप्त करने वाला कंप्यूटर","CPU","Monitor","Memory"],
+a:"सेवा प्राप्त करने वाला कंप्यूटर"
+},
+
+{
+q:"कंप्यूटर में Router का उपयोग किसके लिए होता है?",
+o:["Network जोड़ने के लिए","Print करने के लिए","Scan करने के लिए","Storage के लिए"],
+a:"Network जोड़ने के लिए"
+},
+
+{
+q:"कंप्यूटर में IP Address किससे संबंधित है?",
+o:["Network पहचान","Memory","Keyboard","Printer"],
+a:"Network पहचान"
+},
+  {
+q:"कंप्यूटर में नेटवर्क की सुरक्षा के लिए किसका उपयोग किया जाता है?",
+o:["Firewall","Keyboard","Monitor","Scanner"],
+a:"Firewall"
+},
+  {
+q:"कंप्यूटर में डेटा को एक स्थान से दूसरे स्थान पर भेजने के लिए क्या उपयोग किया जाता है?",
+o:["Network","Monitor","Printer","Keyboard"],
+a:"Network"
+},
+
+{
+q:"कंप्यूटर में सबसे अधिक उपयोग होने वाला Operating System कौन सा है?",
+o:["Windows","Linux","DOS","Unix"],
+a:"Windows"
+},
+
+{
+q:"कंप्यूटर में Google Drive किसका उदाहरण है?",
+o:["Cloud Storage","Antivirus","Browser","Hardware"],
+a:"Cloud Storage"
+},
+
+{
+q:"कंप्यूटर में CAPTCHA का उपयोग किसके लिए किया जाता है?",
+o:["मानव पहचान के लिए","File बनाने के लिए","Printing के लिए","Speed बढ़ाने के लिए"],
+a:"मानव पहचान के लिए"
+},
+
+{
+q:"कंप्यूटर में OTP का पूरा नाम क्या है?",
+o:["One Time Password","Only Text Password","Online Transfer Password","One Type Program"],
+a:"One Time Password"
+},
+
+{
+q:"कंप्यूटर में PDF फाइल खोलने के लिए किस Software का उपयोग किया जाता है?",
+o:["PDF Reader","Paint","Calculator","Notepad"],
+a:"PDF Reader"
+},
+
+{
+q:"कंप्यूटर में Notepad किस प्रकार का Software है?",
+o:["Text Editor","Browser","Game","Antivirus"],
+a:"Text Editor"
+},
+
+{
+q:"कंप्यूटर में Paint का उपयोग किसके लिए होता है?",
+o:["Drawing बनाने के लिए","Internet चलाने के लिए","Programming के लिए","Printing के लिए"],
+a:"Drawing बनाने के लिए"
+},
+
+{
+q:"कंप्यूटर में Calculator का उपयोग किसके लिए होता है?",
+o:["गणना के लिए","Typing के लिए","Scanning के लिए","Storage के लिए"],
+a:"गणना के लिए"
+},
+
+{
+q:"कंप्यूटर में Desktop पर मौजूद मुख्य स्क्रीन को क्या कहते हैं?",
+o:["Desktop","Folder","File","Window"],
+a:"Desktop"
+},
+
+{
+q:"कंप्यूटर में Window बंद करने की Shortcut Key क्या है?",
+o:["Alt + F4","Ctrl + C","Ctrl + V","Ctrl + S"],
+a:"Alt + F4"
+},
+
+{
+q:"कंप्यूटर में नया Folder बनाने की Shortcut Key क्या है?",
+o:["Ctrl + Shift + N","Ctrl + N","Ctrl + F","Alt + N"],
+a:"Ctrl + Shift + N"
+},
+
+{
+q:"कंप्यूटर में Refresh करने की Key कौन सी है?",
+o:["F5","F1","F2","F12"],
+a:"F5"
+},
+
+{
+q:"कंप्यूटर में Rename करने की Shortcut Key क्या है?",
+o:["F2","F5","F1","F10"],
+a:"F2"
+},
+
+{
+q:"कंप्यूटर में File Save करने के लिए कौन सी Key प्रयोग होती है?",
+o:["Ctrl + S","Ctrl + P","Ctrl + Z","Ctrl + X"],
+a:"Ctrl + S"
+},
+
+{
+q:"कंप्यूटर में RAM का पूरा नाम क्या है?",
+o:["Random Access Memory","Read Access Memory","Rapid Access Memory","Run Access Memory"],
+a:"Random Access Memory"
+},
+
+{
+q:"कंप्यूटर में ROM का उपयोग किस लिए होता है?",
+o:["स्थायी जानकारी रखने के लिए","Typing के लिए","Internet के लिए","Printing के लिए"],
+a:"स्थायी जानकारी रखने के लिए"
+},
+
+{
+q:"कंप्यूटर में Hard Disk किस प्रकार की Memory है?",
+o:["Secondary Memory","Primary Memory","Cache Memory","Register Memory"],
+a:"Secondary Memory"
+},
+
+{
+q:"कंप्यूटर में Primary Memory कौन सी होती है?",
+o:["RAM और ROM","Hard Disk","Pen Drive","DVD"],
+a:"RAM और ROM"
+},
+
+{
+q:"कंप्यूटर में Secondary Storage का उदाहरण कौन सा है?",
+o:["Hard Disk","CPU","RAM","Cache"],
+a:"Hard Disk"
+},
+
+{
+q:"कंप्यूटर में Mouse का आविष्कार कब हुआ था?",
+o:["1960 के दशक में","1980 में","1990 में","2000 में"],
+a:"1960 के दशक में"
+},
+
+{
+q:"कंप्यूटर में पहला Electronic Computer कौन सा था?",
+o:["ENIAC","UNIVAC","IBM PC","Apple"],
+a:"ENIAC"
+},
+
+{
+q:"ENIAC का पूरा नाम क्या है?",
+o:["Electronic Numerical Integrator and Computer","Electronic Network Computer","Easy Numerical Computer","Electronic New Computer"],
+a:"Electronic Numerical Integrator and Computer"
+},
+
+{
+q:"कंप्यूटर में Super Computer का उपयोग कहाँ होता है?",
+o:["वैज्ञानिक गणना में","Typing में","Printing में","Gaming में"],
+a:"वैज्ञानिक गणना में"
+},
+
+{
+q:"भारत का पहला Super Computer कौन सा था?",
+o:["PARAM 8000","Aryabhata","Agni","Prithvi"],
+a:"PARAM 8000"
+},
+
+{
+q:"कंप्यूटर में Artificial Intelligence का अर्थ क्या है?",
+o:["मशीनों की बुद्धिमत्ता","Internet Speed","Memory","Hardware"],
+a:"मशीनों की बुद्धिमत्ता"
+},
+
+{
+q:"कंप्यूटर में Machine Language किस पर आधारित होती है?",
+o:["Binary Code","English","Hindi","Graphics"],
+a:"Binary Code"
+},
+
+{
+q:"कंप्यूटर में Binary Number System के अंक कौन से हैं?",
+o:["0 और 1","1 और 2","2 और 3","5 और 6"],
+a:"0 और 1"
+},
+
+{
+q:"कंप्यूटर में Compiler का उपयोग किसके लिए किया जाता है?",
+o:["Program को Translate करने के लिए","Internet चलाने के लिए","File Delete करने के लिए","Print करने के लिए"],
+a:"Program को Translate करने के लिए"
+},
+
+{
+q:"कंप्यूटर में Interpreter क्या करता है?",
+o:["Code को Translate करता है","Photo Edit करता है","Print करता है","Storage करता है"],
+a:"Code को Translate करता है"
+},
+
+{
+q:"कंप्यूटर में Program लिखने वाले व्यक्ति को क्या कहते हैं?",
+o:["Programmer","Operator","User","Designer"],
+a:"Programmer"
+},
+
+{
+q:"कंप्यूटर में Bug का अर्थ क्या है?",
+o:["Program की त्रुटि","Virus","Hardware","Memory"],
+a:"Program की त्रुटि"
+},
+
+{
+q:"कंप्यूटर में Debugging क्या है?",
+o:["त्रुटि दूर करना","File Delete करना","Print करना","Save करना"],
+a:"त्रुटि दूर करना"
+},
+
+{
+q:"कंप्यूटर में Data का अर्थ क्या है?",
+o:["कच्ची जानकारी","Software","Hardware","Program"],
+a:"कच्ची जानकारी"
+},
+
+{
+q:"कंप्यूटर में Information क्या होती है?",
+o:["Processed Data","Raw Data","Hardware","Memory"],
+a:"Processed Data"
+},
+
+{
+q:"कंप्यूटर में Keyboard की सबसे बड़ी Key कौन सी होती है?",
+o:["Spacebar","Enter","Shift","Backspace"],
+a:"Spacebar"
+},
+
+{
+q:"कंप्यूटर में Backspace Key का उपयोग किसके लिए होता है?",
+o:["पीछे का अक्षर हटाने के लिए","Copy करने के लिए","Save करने के लिए","Print करने के लिए"],
+a:"पीछे का अक्षर हटाने के लिए"
+},
+
+{
+q:"कंप्यूटर में Shift Key का उपयोग किसके लिए होता है?",
+o:["Capital Letter लिखने के लिए","Delete करने के लिए","Save करने के लिए","Print करने के लिए"],
+a:"Capital Letter लिखने के लिए"
+},
+
+{
+q:"कंप्यूटर में Alt Key का पूरा नाम क्या है?",
+o:["Alternate Key","Automatic Key","Alternative Link","Advance Key"],
+a:"Alternate Key"
+},
+
+{
+q:"कंप्यूटर में Esc Key का उपयोग किसके लिए होता है?",
+o:["Cancel करने के लिए","Save करने के लिए","Copy करने के लिए","Print करने के लिए"],
+a:"Cancel करने के लिए"
+},
+
+{
+q:"कंप्यूटर में Web Address को क्या कहते हैं?",
+o:["URL","CPU","RAM","USB"],
+a:"URL"
+},
+
+{
+q:"URL का पूरा नाम क्या है?",
+o:["Uniform Resource Locator","Universal Record Link","User Resource Line","Uniform Read Link"],
+a:"Uniform Resource Locator"
+},
+
+{
+q:"कंप्यूटर में HTTP का पूरा नाम क्या है?",
+o:["Hyper Text Transfer Protocol","High Transfer Text Program","Hyper Tool Transfer Process","Home Text Protocol"],
+a:"Hyper Text Transfer Protocol"
+},
+
+{
+q:"कंप्यूटर में HTTPS में S का अर्थ क्या है?",
+o:["Secure","System","Server","Service"],
+a:"Secure"
+},
+
+{
+q:"कंप्यूटर में Wi-Fi का पूरा नाम क्या है?",
+o:["Wireless Fidelity","Wide File","Wireless Finder","Web Fidelity"],
+a:"Wireless Fidelity"
+},
+
+{
+q:"कंप्यूटर में Bluetooth का नाम किससे जुड़ा है?",
+o:["Wireless Communication","Printing","Storage","Operating System"],
+a:"Wireless Communication"
+},
+
+{
+q:"कंप्यूटर में Email Address में @ चिन्ह को क्या कहते हैं?",
+o:["At Sign","Hash","Star","Dollar"],
+a:"At Sign"
+},
+
+{
+q:"कंप्यूटर में Social Media का उदाहरण कौन सा है?",
+o:["Facebook","CPU","RAM","Windows"],
+a:"Facebook"
+},
+
+{
+q:"कंप्यूटर में Digital India अभियान कब शुरू किया गया?",
+o:["2015","2010","2020","2005"],
+a:"2015"
+},
+
+{
+q:"कंप्यूटर शिक्षा का मुख्य उद्देश्य क्या है?",
+o:["तकनीकी ज्ञान बढ़ाना","केवल खेलना","केवल टाइपिंग","केवल प्रिंट करना"],
+a:"तकनीकी ज्ञान बढ़ाना"
+},
+  
+];
+
+
+let quiz = document.getElementById("quiz");
+
+
+questions.forEach((item,index)=>{
+
+let html = `
+<div class="question">
+
+<h3>${index+1}. ${item.q}</h3>
+
+`;
+
+
+item.o.forEach(option=>{
+
+html += `
+<label class="option">
+<input type="radio" name="q${index}" value="${option}">
+${option}
+</label><br>
+`;
+
+});
+
+
+
+
+
+html += `</div>`;
+
+quiz.innerHTML += html;
+
+});
+function checkResult(){
+
+let score = 0;
+let correct = [];
+let wrong = [];
+
+
+questions.forEach((item,index)=>{
+
+let selected = document.querySelector(
+`input[name="q${index}"]:checked`
+);
+
+
+if(selected && selected.value === item.a){
+
+score++;
+correct.push(index+1);
+
+}
+else{
+
+wrong.push(index+1);
+
+}
+
+});
+
+document.getElementById("result").innerHTML =
+
+"🎉 Test Completed!<br><br>" +
+
+"आपका Score: <b>" + score + " / " + questions.length + "</b><br><br>" +
+
+"✅ सही Questions: " + 
+(correct.length ? correct.join(", ") : "कोई नहीं") +
+
+"<br><br>❌ गलत Questions: " +
+
+(wrong.length ? wrong.join(", ") : "कोई नहीं");
+
+
+}
+
+
+</script>
+
+
+</body>
+</html>

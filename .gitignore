@@ -1,7 +1,7 @@
-.axs/
-.cache/
-.npm/
-.bash_history
-.bashrc
-.config/
-.gitconfig
+node_modules/
+.gradle/
+.local/
+.android/
+android-sdk/
+*.apk
+*.aab

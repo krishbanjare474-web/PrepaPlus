@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CG Sports - PrepaPlus</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f8ff;
+        }
+
+        .sports-header {
+            background: linear-gradient(135deg, #0d6efd, #6610f2);
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        .sports-header h1 {
+            margin: 0 0 8px;
+            font-size: 28px;
+        }
+
+        .sports-header p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .sports-container {
+            max-width: 850px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        .sports-title {
+            background: white;
+            padding: 18px;
+            border-radius: 14px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .sports-title h2 {
+            margin: 0 0 8px;
+            color: #0d6efd;
+        }
+
+        .sports-title p {
+            margin: 0;
+            color: #666;
+        }
+
+        #question-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .question-card {
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .question-card h3 {
+            margin-top: 0;
+            color: #222;
+            font-size: 18px;
+        }
+
+        .option {
+            display: block;
+            background: #f5f7fb;
+            border: 2px solid #e1e5ee;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .option:hover {
+            border-color: #0d6efd;
+            background: #eef5ff;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .correct {
+            background: #d1e7dd !important;
+            border-color: #198754 !important;
+            color: #146c43;
+        }
+
+        .wrong {
+            background: #f8d7da !important;
+            border-color: #dc3545 !important;
+            color: #b02a37;
+        }
+
+        #submit-btn {
+            display: block;
+            width: 100%;
+            margin: 25px 0;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: #0d6efd;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #submit-btn:hover {
+            background: #0b5ed7;
+        }
+
+        #result {
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+
+            .sports-header h1 {
+                font-size: 23px;
+            }
+
+            .question-card h3 {
+                font-size: 16px;
+            }
+
+            .option {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="sports-header">
+        <h1>🏆 CG Sports</h1>
+        <p>छत्तीसगढ़ खेल एवं खिलाड़ी</p>
+    </header>
+
+    <main class="sports-container">
+
+        <div class="sports-title">
+            <h2>🏅 CG Sports Practice Test</h2>
+            <p>छत्तीसगढ़ के खेल, खिलाड़ी, पुरस्कार एवं प्रतियोगिताओं के महत्वपूर्ण MCQ</p>
+        </div>
+
+        <div id="question-container"></div>
+
+        <button id="submit-btn" onclick="checkResult()">
+            ✅ Submit & Check
+        </button>
+
+        <div id="result"></div>
+
+    </main>
+
+    <script src="cg-sports.js"></script>
+
+</body>
+
+</html>
